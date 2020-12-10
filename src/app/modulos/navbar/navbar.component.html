@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="hamburger">
+        <div class="cta">
+            <div id="btn" class="toggle-btn type14"></div>
+        </div>
+    </div>
+
+ 
+    <a class="navbar-brand" href="#">
+        <img class="logo" src="https://portal.ucm.cl//content/uploads/2019/01/logo-footer_nuevo.png" style="width: 144px;" >
+      </a>
+
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="#"><img  alt="dsa"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><img alt="dsadas"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><img  alt="ssadad"></a>
+        </li>
+    </ul>
+</nav>
+
+
+<section class="side-bar-warp">
+    <div class="menu-lateral cerrar-barra-lateral flowHide">
+        <nav class="">
+            <li class="nav-item-img">
+                <img id = "logo" class=" desvanecimientoIsquierdo animacion " style="width: 200px; margin-left: 20px; margin-top: 53px; margin-bottom: 10px; display: none;" src="https://portal.ucm.cl//content/uploads/2019/06/logo_ucm_marca.png" alt="">
+            </li>
+           
+            
+            <ul class="navbar-nav">
+               
+
+                <div class="card desvanecimientoIsquierdo animacion" >
+                    <div class="card-header">
+                      <h5 class="mb-0">
+                        <a ><mdb-icon [routerLink]="['/menu']" fas icon="home"></mdb-icon></a>
+                        <a class="btn btn-link  textos" [routerLink]="['/menu']" >Inicio </a>
+                      </h5>
+                    </div>
+                </div>
+                
+
+                <div id="accordion">
+                    <div class="card ">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <mdb-icon fas icon="tools" data-toggle="collapse" data-target="#collapseOne"></mdb-icon>
+                          <a class="btn btn-link textos" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Administrador</a>
+                        </h5>
+                      </div>
+                  
+                      <div id="collapseOne" class="collapse hide " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                             <li class="text-dentro" [routerLink]="['/usuario']"> <mdb-icon fas icon="user-alt"></mdb-icon> <button class="btn btn-link  textos">Usuarios</button></li>
+                             
+                            
+                            <li  class="text-dentro" [routerLink]="['/rol']"> <mdb-icon fas icon="clipboard-list"></mdb-icon> <button class="btn btn-link  textos" >Roles</button></li>
+
+                        </div>
+                      </div>
+                    </div>            
+                  </div>
+
+               
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <span class="sidebar-icon"><img  alt=""></span>
+                    <span class="desvanecimientoIsquierdo animacion link-nav-nombre nombre-oculto barra-visible">Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    
+</section>
