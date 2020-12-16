@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './modulos/navbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { interceptorProvider } from './interceptor/rol-interceptor.service';
+
 
 //inicio servicio
 import { CargarScriptsService} from "./cargar-scripts.service";
@@ -17,6 +19,9 @@ import { RolComponent } from './component/rol/rol.component';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiltroPipe } from './pipes/filtro.pipe';
+import { LoginComponent } from './component/login/login.component';
+
+
 
 //fin servicio
 
@@ -29,6 +34,7 @@ import { FiltroPipe } from './pipes/filtro.pipe';
     UsuarioComponent,
     RolComponent,
     FiltroPipe,
+    LoginComponent,
 
   ],
   imports: [
@@ -38,11 +44,13 @@ import { FiltroPipe } from './pipes/filtro.pipe';
     HttpClientModule,
     NgxPaginationModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
 
   ],
   providers: [
-    CargarScriptsService
+    CargarScriptsService,
+    interceptorProvider
   ],
   bootstrap: [AppComponent]
 })

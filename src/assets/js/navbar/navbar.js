@@ -20,7 +20,6 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-     $(".textos").hide();
 
     var estado = 0;
     $(".hamburger").click(function(){
@@ -44,14 +43,14 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
-    var estado = 0;
+    var estado1 = 0;
     $(".admin").click(function(){
 
-        if(estado == 0){
+        if(estado1 == 0){
             $(".admin-accion").show();
-            estado = 1;
+            estado1 = 1;
         }else{
-            estado = 0;
+            estado1 = 0;
             $(".admin-accion").hide();    
         }
         

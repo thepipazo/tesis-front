@@ -1,6 +1,4 @@
-export interface Rol{
+export class Rol{
                  id: number;
-                 descripcion: String;
-                 nombre: String;   
-
+                 rolNombre:string;
 }

@@ -1,36 +1,120 @@
+<div class="container col-md-12" style="margin-top: 1%;">
+    <h3 style="margin-left: 5%; margin-bottom: 2%;">Sistema de evidencia</h3>
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-4">
+            <form #f="ngForm" (ngSubmit)="onRegistro()" novalidate>
+                <mdb-card style="height: 600px;">
+                    <mdb-card-header>
+                        <h3>Registro De Roles</h3>
+                    </mdb-card-header>
+                    <mdb-card-body>
+                        <div class="container" style="    margin-top: -8%;">
+
+                            <div class="md-form" style="width:100%;">
+                                <input mdbInput type="text" [disabled]="!mostrar_boton" [(ngModel)]="userRut"
+                                    width="100%" name="rut_user" id="rut_user" class="form-control" required>
+                                <label for="id" class="">Rut</label>
+                            </div>
+                            <div class="row " style="margin-left: 0%; width: 100%; margin-bottom: -7%;margin-top: -6%;">
+                                <div class="md-form col-md-6" style="padding-right: 8%;  padding: 0%;">
+                                    <input mdbInput type="text" [(ngModel)]="nombre" style="width:100%"
+                                        name="nombre_user" id="nombre_user" class="form-control" required>
+                                    <label for="nombre" class="">Nombres</label>
+                                </div>
+                                <div class="md-form col-md-6" style="padding: initial;float: right; ">
+                                    <input mdbInput type="text" [(ngModel)]="apellido" style="width:100%"
+                                        name="apellido_user" id="apellido_user" class="form-control" required>
+                                    <label for="nombre" class="">Apellidos</label>
+                                </div>
+                            </div>
+                            <div class="md-form" style="width:100%;">
+                                <input mdbInput type="text" [(ngModel)]="nombreUsuario" style="width:100%" name="email"
+                                    id="email" class="form-control" required>
+                                <label for="nombre" class="">Email</label>
+                            </div>
+                            <div class="md-form" style="width:100%;" *ngIf="mostrar_boton">
+                                <input mdbInput type="text" [(ngModel)]="password" style="width:100%" name="password"
+                                    id="password" class="form-control">
+                                <label for="nombre" class="">Password</label>
+                            </div>
+
+                            <input  style="width: 100%;" type="button" (click)="activarRoles()" value="Roles">
+                            <div class="card" *ngIf="isRoles">
+                            <select  [compareWith]="compararNombres(roles, rolesPrecargados)" class="browser-default custom-select" multiple id="roles" name="roles" [(ngModel)]="rolesSeleccionados"  required>
+                                <option   *ngFor="let roles of roles" [ngValue]="roles.rolNombre"  >{{ roles.rolNombre }} <span><mdb-icon fas icon="check"></mdb-icon></span> </option>
+                            </select>
+                            <input disabled style="width: 100%;" type="text" placeholder="{{rolesSeleccionados}}">
+
+                        </div>
+                          
+                        </div>
+                        
+                        
 
 
 
+                    </mdb-card-body>
+                    <mdb-card-footer>
+                        <button style="margin-left: 2%;" mdbWavesEffect class="btn btn-success" type="button"
+                            type="submit" [disabled]="!f.valid" *ngIf="mostrar_boton"> Guardar </button>
 
-<div class="container" style="margin-top: 1%;">
-    <mdb-card>
-        <mdb-card-header><h3>Usuarios</h3> </mdb-card-header>
-        <mdb-card-body>
-         
-            <table mdbTable hover="true">
-                <thead>
-                  <tr>
-                    <th>jajaja</th>
-                    <th>dsadsad</th>
-                    <th>fafafaf</th>
-                    <th>gagagag</th>
-            
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr >
-                    <th>ada</th>
-                    <td>adad</td>
-                    <td>addad</td>
-                    <td>adad</td>
-                  </tr>
-                </tbody>
-              </table>
+                        <button mdbWavesEffect *ngIf="mostrar_boton == false" type="button" class="btn btn-primary"
+                            (click)="editar()" [disabled]="!f.valid">Editar</button>
 
+                        <button mdbWavesEffect (click)="reset()" style="float: right;" type="button"
+                            class="btn btn-warning">Cancelar</button>
+                    </mdb-card-footer>
+                </mdb-card>
+            </form>
+        </div>
 
-        </mdb-card-body>
-        <mdb-card-footer class="text-muted"></mdb-card-footer>
+        <div class="col-md-6">
+            <mdb-card style="height: 600px;">
+                <mdb-card-header>
+                    <h3>Roles</h3>
+                    <div class="md-form" id="buscador">
+                        <input mdbInput type="text" [(ngModel)]="filtroUser" class="form-control">
+                        <label for="form1" class="">Buscar Por ID</label>
+                    </div>
+                </mdb-card-header>
 
-      </mdb-card>
+                <mdb-card-body style="overflow-y: auto;">
 
+                    <table mdbTable hover="true" class="table-responsive-md  text-center">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Email</th>
+                                <th>Accion</th>
+
+                            </tr>
+                        </thead>
+                        <tbody style="overflow: auto;">
+                            <tr *ngFor="let item of usuarios | filtro: 'rut':filtroUser">
+                                <td>{{item.rut}}</td>
+                                <td>{{item.nombre}}</td>
+                                <td>{{item.apellido}}</td>
+                                <td>{{item.nombreUsuario}}</td>
+
+                                <td><button type="button" (click)="ver(item)" class="btn btn-info"
+                                        mdbWavesEffect>Ver</button>
+                                    <button style="margin-left: 2%;" (click)="eliminar(item)" type="button"
+                                        class="btn btn-danger" mdbWavesEffect>Eliminar</button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </mdb-card-body>
+                <mdb-card-footer>
+
+                </mdb-card-footer>
+
+            </mdb-card>
+        </div>
+    </div>
 </div>
