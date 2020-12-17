@@ -20,6 +20,7 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { LoginComponent } from './component/login/login.component';
+import { UnidadComponent } from './component/unidad/unidad.component';
 
 
 
@@ -35,6 +36,7 @@ import { LoginComponent } from './component/login/login.component';
     RolComponent,
     FiltroPipe,
     LoginComponent,
+    UnidadComponent,
 
   ],
   imports: [

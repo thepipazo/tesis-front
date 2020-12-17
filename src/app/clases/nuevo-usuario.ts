@@ -1,3 +1,5 @@
+import { Unidad } from "./Unidad";
+
 export class NuevoUsuario {
     id: number;
     rut: string;
@@ -6,8 +8,10 @@ export class NuevoUsuario {
     nombreUsuario: string;
     password: string;
     roles: string;
+    unidad: Unidad;
+
     
-    constructor(id : number,rut : string,nombre:string, apellido :string, nombreUsuario:string,password:string , roles : string){
+    constructor(id : number,rut : string,nombre:string, apellido :string, nombreUsuario:string,password:string , roles : string, unidad : Unidad){
         this.id = id;
         this.rut = rut;
         this.nombre = nombre;
@@ -15,6 +19,7 @@ export class NuevoUsuario {
         this.nombreUsuario = nombreUsuario;
         this.password = password;
         this.roles = roles;
+        this.unidad = unidad;
     } 
 
 }

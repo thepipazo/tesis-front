@@ -51,7 +51,7 @@
           </div>
 
 
-          <div id="accordion">
+          <div id="accordion" *ngIf="consultaRol(['admin'])">
             <div class="card ">
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
@@ -70,6 +70,10 @@
 
                   <li class="text-dentro" [routerLink]="['/rol']">
                     <mdb-icon fas icon="clipboard-list"></mdb-icon> <button class="btn btn-link  textos">Roles</button>
+                  </li>
+
+                  <li class="text-dentro" [routerLink]="['/unidad']">
+                    <mdb-icon fas icon="clipboard-list"></mdb-icon> <button class="btn btn-link  textos">Unidades</button>
                   </li>
 
                 </div>

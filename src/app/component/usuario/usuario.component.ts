@@ -8,6 +8,8 @@ import swal from 'sweetalert2';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RolService } from 'src/app/servicios/Rol/rol.service';
 import { Rol } from 'src/app/clases/Rol';
+import { Unidad } from 'src/app/clases/Unidad';
+import { UnidadService } from 'src/app/servicios/unidad/unidad.service';
 
 
 @Component({
@@ -19,7 +21,7 @@ export class UsuarioComponent implements OnInit {
   isRegistro = false;
   usuarios: NuevoUsuario[] = [];
   isRegistroFail = false;
-  userId : number;
+  userId : number = null;
   userRut: string;
   nuevoUsuario: NuevoUsuario;
   nombre: string;
@@ -31,8 +33,10 @@ export class UsuarioComponent implements OnInit {
   mostrar_boton = true;
   filtroUser = '';
   roles: Rol[];
-  rolesSeleccionados :string;
+  rolesSeleccionados :string = null;
+  unidadSeleccionada: Unidad;
   isRoles = false;
+  unidades:Unidad[];
 
   rolesPrecargados:  string;
   
@@ -44,6 +48,7 @@ export class UsuarioComponent implements OnInit {
     private router: Router,
     public fb: FormBuilder,
     public rolService: RolService,
+    public unidaService:UnidadService,
 
   ) {
     cargaScripts.carga(["usuario/usuario"]);
@@ -56,9 +61,9 @@ export class UsuarioComponent implements OnInit {
    
 
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
       this.listarUsuarios();
       this.listarRoles();
+      this.listarUnidades();
     }
 
   }
@@ -80,7 +85,17 @@ activarRoles(): void{
 }
 
   onRegistro(): void {
-    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSeleccionados);
+   if(this.rolesSeleccionados == null){
+
+      swal.fire('Complete el formulario', `Seleccione un rol`, 'warning');
+
+   }else if(this.password == ""){
+    swal.fire('Complete el formulario', `ingrese una contraseña`, 'warning');
+
+   }else{
+
+
+    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSeleccionados,this.unidadSeleccionada);
     this.authservice.nuevo(this.nuevoUsuario).subscribe(data => {
       this.authservice.listarTodoLosUser().subscribe(resp => {
         this.usuarios = resp;
@@ -100,6 +115,7 @@ activarRoles(): void{
       }
 
     );
+   }
     console.log(this.nuevoUsuario);
   }
 
@@ -115,6 +131,8 @@ activarRoles(): void{
     this.nombreUsuario = usuario.nombreUsuario;
     this.mostrar_boton = false;
     this.rolesPrecargados = usuario.roles;
+    this.unidadSeleccionada = usuario.unidad;
+    
   }
 
 
@@ -128,7 +146,13 @@ activarRoles(): void{
   listarRoles(): void {
     this.authservice.listarTodoLosRoles().subscribe(resp => {
       this.roles = resp;
-      console.log(resp);
+    })
+
+  }
+
+  listarUnidades(): void {
+    this.unidaService.listarUnidadesPorEstado().subscribe(resp => {
+      this.unidades = resp;
     })
 
   }
@@ -141,10 +165,12 @@ activarRoles(): void{
     this.password = "";
     this.userId = null;
     this.mostrar_boton = true;
+    this.unidadSeleccionada = null;
+    this.rolesSeleccionados = null;
   }
 
   editar() {
-    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSeleccionados);
+    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSeleccionados,this.unidadSeleccionada);
     console.log(this.nuevoUsuario);
     this.authservice.actualizar(this.nuevoUsuario).subscribe(usuario => {
       this.authservice.listarTodoLosUser().subscribe(resp => {

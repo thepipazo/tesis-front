@@ -5,12 +5,12 @@
 
         <div class="col-md-4">
             <form #f="ngForm" (ngSubmit)="onRegistro()" novalidate>
-                <mdb-card style="height: 600px;">
+                <mdb-card style="height: 671px;">
                     <mdb-card-header>
                         <h3>Registro De Roles</h3>
                     </mdb-card-header>
                     <mdb-card-body>
-                        <div class="container" style="    margin-top: -8%;">
+                        <div class="container" style="margin-top: -3%;">
 
                             <div class="md-form" style="width:100%;">
                                 <input mdbInput type="text" [disabled]="!mostrar_boton" [(ngModel)]="userRut"
@@ -36,22 +36,41 @@
                             </div>
                             <div class="md-form" style="width:100%;" *ngIf="mostrar_boton">
                                 <input mdbInput type="text" [(ngModel)]="password" style="width:100%" name="password"
-                                    id="password" class="form-control">
+                                    id="password" class="form-control" required>
                                 <label for="nombre" class="">Password</label>
                             </div>
 
-                            <input  style="width: 100%;" type="button" (click)="activarRoles()" value="Roles">
-                            <div class="card" *ngIf="isRoles">
-                            <select  [compareWith]="compararNombres(roles, rolesPrecargados)" class="browser-default custom-select" multiple id="roles" name="roles" [(ngModel)]="rolesSeleccionados"  required>
-                                <option   *ngFor="let roles of roles" [ngValue]="roles.rolNombre"  >{{ roles.rolNombre }} <span><mdb-icon fas icon="check"></mdb-icon></span> </option>
+                            <label for="unidad" class="">Unidad</label>
+
+                            <mdb-card style="margin-bottom:3% ;">
+
+                                <select required class="browser-default custom-select" id="unidad" name="unidad" [(ngModel)]="unidadSeleccionada" >
+                                <option  *ngFor="let unidades of unidades" [ngValue]="unidades">{{unidades.nombre}}</option>
+                                
                             </select>
-                            <input disabled style="width: 100%;" type="text" placeholder="{{rolesSeleccionados}}">
+
+                        </mdb-card>
+                        <mdb-card>
+                            <input style="width: 100%;" type="button" (click)="activarRoles()" value="Roles">
+                            <div class="card" *ngIf="isRoles">
+                                <select  class="browser-default custom-select" multiple id="roles" name="roles"
+                                    [(ngModel)]="rolesSeleccionados" required>
+                                    <option *ngFor="let roles of roles" [ngValue]="roles.rolNombre">{{ roles.rolNombre
+                                        }} <span>
+                                            <mdb-icon fas icon="check"></mdb-icon>
+                                        </span> </option>
+                                </select>
+                                <input disabled style="width: 100%;" type="text" placeholder="{{rolesSeleccionados}}">
+                            </div>
+                        </mdb-card>
+
+
+                            
+
 
                         </div>
-                          
-                        </div>
-                        
-                        
+
+
 
 
 
@@ -89,6 +108,7 @@
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
                                 <th>Email</th>
+                                <th>UNIDAD</th>
                                 <th>Accion</th>
 
                             </tr>
@@ -99,6 +119,8 @@
                                 <td>{{item.nombre}}</td>
                                 <td>{{item.apellido}}</td>
                                 <td>{{item.nombreUsuario}}</td>
+                                <td>{{item.unidad.nombre}}</td>
+
 
                                 <td><button type="button" (click)="ver(item)" class="btn btn-info"
                                         mdbWavesEffect>Ver</button>
