@@ -21,6 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { LoginComponent } from './component/login/login.component';
 import { UnidadComponent } from './component/unidad/unidad.component';
+import { CriterioComponent } from './component/criterio/criterio.component';
+import { ProcesoComponent } from './component/proceso/proceso.component';
 
 
 
@@ -37,6 +39,8 @@ import { UnidadComponent } from './component/unidad/unidad.component';
     FiltroPipe,
     LoginComponent,
     UnidadComponent,
+    CriterioComponent,
+    ProcesoComponent,
 
   ],
   imports: [

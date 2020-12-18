@@ -25,7 +25,6 @@ export class UnidadComponent implements OnInit {
   estado:boolean;
   refomat:string;
 
-  colorEstado:string ="green";
 
   estadoSeleccionados:string;
 
@@ -92,10 +91,8 @@ export class UnidadComponent implements OnInit {
 
     if(estado_unidad == true){
       this.refomat = "ACTIVO";
-      this.colorEstado ="green"
     }else if(estado_unidad == false){
       this.refomat = "INACTIVO";
-      this.colorEstado ="red"
 
     }
 

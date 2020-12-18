@@ -6,6 +6,7 @@ import { LoginComponent } from './component/login/login.component';
 import { RolComponent } from './component/rol/rol.component';
 import { RolGuardService as guard } from './guards/rol-guard.service';
 import { UnidadComponent } from './component/unidad/unidad.component';
+import { CriterioComponent } from './component/criterio/criterio.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'usuario', component: UsuarioComponent ,canActivate: [guard], data: { expectedRol: ['admin'] }},
   { path: 'unidad', component: UnidadComponent ,canActivate: [guard], data: { expectedRol: ['admin'] }},
   { path: 'login', component: LoginComponent },
+  { path: 'criterio', component: CriterioComponent },
   { path: '', component: LoginComponent }
 ];
 
