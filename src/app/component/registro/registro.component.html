@@ -1,1 +1,90 @@
-<p>registro works!</p>
+<div class="container col-md-12" style="margin-top: 1%;">
+    <h3 style="margin-left: 5%; margin-bottom: 2%;">Sistema de evidencia</h3>
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-4">
+            <form #f="ngForm">
+                <mdb-card style="height: 600px;">
+                    <mdb-card-header>
+                        <h3>Registro De Registros</h3>
+                    </mdb-card-header>
+                    <mdb-card-body>
+                        <div class="container">
+
+                           
+                            <div class="md-form ">
+                                <input mdbInput type="text" name="nombreRegistro" id="nombreRegistro" [(ngModel)]="nombreRegistro"
+                                    class="form-control"   required >
+                                <label for="nombreRegistro" class="">Tipo Registro</label>
+                            </div>
+                        </div>
+
+                        <select *ngIf="mostrar_boton" class="browser-default custom-select"  id="estado" name="estado" [(ngModel)]="estado" required ngDefaultControl >
+                            <option [ngValue]="true">ACTIVO</option>
+                            <option [ngValue]="false">INACTIVO</option>
+
+                        </select>
+
+
+                    </mdb-card-body>
+                    <mdb-card-footer>
+                        <button style="margin-left: 2%;" *ngIf="!mostrar_boton" mdbWavesEffect class="btn btn-success"
+                            [disabled]="!f.valid" type="button" (click)="create()"> Guardar </button>
+
+                        <button mdbWavesEffect type="button" *ngIf="mostrar_boton" (click)="actualizar()"
+                            class="btn btn-primary">Editar</button>
+
+                        <button mdbWavesEffect style="float: right;" type="button" class="btn btn-warning"
+                            (click)="reset()">Cancelar</button>
+                    </mdb-card-footer>
+                </mdb-card>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <mdb-card style="height: 600px;">
+                <mdb-card-header>
+                    <h3>Registros</h3>
+                    <div class="md-form" id="buscador">
+                        <input mdbInput type="text" class="form-control">
+                        <label for="form1" class="">Buscar Por ID</label>
+                    </div>
+                </mdb-card-header>
+
+                <mdb-card-body style="overflow-y: auto;">
+
+                    <table mdbTable hover="true" class="table-responsive-md  text-center">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>estado</th>
+                                <th>Accion</th>
+
+                            </tr>
+                        </thead>
+                        <tbody style="overflow: auto;">
+                            <tr *ngFor="let item of registros"  id="registros" name="registros">
+                                <td><a>{{item.id}}</a></td>
+                                <td><a>{{item.tipo_registro}}</a></td>
+                                <td><a>{{estadoEntrante(item.estado)}}</a></td>
+
+                                <td><button type="button" (click)="ver(item)" class="btn btn-info"
+                                        mdbWavesEffect>Ver</button>
+                                    <button style="margin-left: 2%;" (click)="eliminar(item)" type="button"
+                                        class="btn btn-danger" mdbWavesEffect>Eliminar</button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </mdb-card-body>
+                <mdb-card-footer>
+
+                </mdb-card-footer>
+
+            </mdb-card>
+        </div>
+    </div>
+</div>

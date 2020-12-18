@@ -10,22 +10,31 @@ codigo:string;
 nombre:string;
 estado:boolean;
 
+  refomat:string;
+
 mostrar_boton:boolean;
+
   constructor() { }
 
+
+
+
+
+
   actualizar() {}
-  
+
   eliminar(item:string ): void {}
 
-  ver(proceso: null) {
 
-    this.id = null;
-    this.codigo = null;
-    this.nombre = null;
-    this.estado = null;
-    this.mostrar_boton = true;
+  ver(proceso: null) { }
 
-  }
+  listarTodos() {}
+
+  create(): void {}
+
+  reset() {}
+
+  estadoEntrante(estado_unidad:boolean):string{ return null }
 
 
 }

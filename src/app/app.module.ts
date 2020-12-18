@@ -23,7 +23,7 @@ import { LoginComponent } from './component/login/login.component';
 import { UnidadComponent } from './component/unidad/unidad.component';
 import { CriterioComponent } from './component/criterio/criterio.component';
 import { ProcesoComponent } from './component/proceso/proceso.component';
-import { RegistroComponent } from './components/registro/registro.component';
+import { RegistroComponent } from './component/registro/registro.component';
 
 
 
