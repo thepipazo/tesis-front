@@ -10,6 +10,7 @@ import { CriterioComponent } from './component/criterio/criterio.component';
 import { ProcesoComponent } from './component/proceso/proceso.component';
 import { RegistroComponent } from './component/registro/registro.component';
 import { AmbitoGeograficoComponent } from './component/ambito-geografico/ambito-geografico.component';
+import { AmbitoAcademicoComponent } from './component/ambito-academico/ambito-academico.component';
 
 
 
@@ -24,6 +25,8 @@ const routes: Routes = [
   { path: 'proceso', component: ProcesoComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'ambito-geografico', component: AmbitoGeograficoComponent },
+  { path: 'ambito-academico', component: AmbitoAcademicoComponent },
+
 
 
   { path: '', component: LoginComponent }
