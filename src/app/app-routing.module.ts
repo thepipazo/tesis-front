@@ -9,6 +9,7 @@ import { UnidadComponent } from './component/unidad/unidad.component';
 import { CriterioComponent } from './component/criterio/criterio.component';
 import { ProcesoComponent } from './component/proceso/proceso.component';
 import { RegistroComponent } from './component/registro/registro.component';
+import { AmbitoGeograficoComponent } from './component/ambito-geografico/ambito-geografico.component';
 
 
 
@@ -22,6 +23,8 @@ const routes: Routes = [
   { path: 'criterio', component: CriterioComponent },
   { path: 'proceso', component: ProcesoComponent },
   { path: 'registro', component: RegistroComponent },
+  { path: 'ambito-geografico', component: AmbitoGeograficoComponent },
+
 
   { path: '', component: LoginComponent }
 ];

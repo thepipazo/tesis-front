@@ -24,6 +24,8 @@ import { UnidadComponent } from './component/unidad/unidad.component';
 import { CriterioComponent } from './component/criterio/criterio.component';
 import { ProcesoComponent } from './component/proceso/proceso.component';
 import { RegistroComponent } from './component/registro/registro.component';
+import { AmbitoGeograficoComponent } from './component/ambito-geografico/ambito-geografico.component';
+import { AmbitoAcademicoComponent } from './component/ambito-academico/ambito-academico.component';
 
 
 
@@ -43,6 +45,8 @@ import { RegistroComponent } from './component/registro/registro.component';
     CriterioComponent,
     ProcesoComponent,
     RegistroComponent,
+    AmbitoGeograficoComponent,
+    AmbitoAcademicoComponent,
 
   ],
   imports: [

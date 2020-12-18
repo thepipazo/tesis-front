@@ -4,14 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class FuncionesService {
-
-id:number;
-codigo:string;
-nombre:string;
-estado:boolean;
-
-  refomat:string;
-
+entidades:any[];
+entidad:any;
+  
+refomat:string;
 mostrar_boton:boolean;
 
   constructor() { }
