@@ -7,6 +7,7 @@ import { RolComponent } from './component/rol/rol.component';
 import { RolGuardService as guard } from './guards/rol-guard.service';
 import { UnidadComponent } from './component/unidad/unidad.component';
 import { CriterioComponent } from './component/criterio/criterio.component';
+import { ProcesoComponent } from './component/proceso/proceso.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'unidad', component: UnidadComponent ,canActivate: [guard], data: { expectedRol: ['admin'] }},
   { path: 'login', component: LoginComponent },
   { path: 'criterio', component: CriterioComponent },
+  { path: 'proceso', component: ProcesoComponent },
   { path: '', component: LoginComponent }
 ];
 
