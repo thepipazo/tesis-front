@@ -20,6 +20,10 @@ export class CriterioService {
      
    }
 
+   public  listarCriteriosTrue(estado:boolean) : Observable<Criterio[]>{
+    return this.http.get<Criterio[]>(this.API_SERVER+"/listEstado/"+estado);
+     
+   }
 
    create(criterio: Criterio) : Observable<Criterio>{
     return this.http.post(this.API_SERVER+"/guardar",criterio,{headers: this.httpHeaders}).pipe(

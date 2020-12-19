@@ -63,7 +63,7 @@ export class UsuarioComponent implements OnInit {
     if (this.tokenService.getToken()) {
       this.listarUsuarios();
       this.listarRoles();
-      this.listarUnidades();
+      this.listarUnidadesTrue(true);
     }
 
   }
@@ -150,8 +150,8 @@ activarRoles(): void{
 
   }
 
-  listarUnidades(): void {
-    this.unidaService.listarUnidadesPorEstado().subscribe(resp => {
+  listarUnidadesTrue(estado:boolean): void {
+    this.unidaService.listarUnidadesPorEstado(estado).subscribe(resp => {
       this.unidades = resp;
     })
 

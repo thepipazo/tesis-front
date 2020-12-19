@@ -19,6 +19,8 @@ export class CriterioComponent implements OnInit {
   descripcion : string;
   explicacion :string;
   refomat:string;
+  filtroUser : string;
+
 
   criterio:Criterio;
   estado:boolean=null;

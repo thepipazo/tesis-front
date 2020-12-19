@@ -1,6 +1,7 @@
 
-
 $(document).ready(function () {
+    $(".textos").hide();
+
     $(document).on('click', '.cta', function () {
         $(this).toggleClass('activo')
 
@@ -26,11 +27,11 @@ $(document).ready(function(){
 
         if(estado == 0){
             $("#logo").show();
-            $(".textos").show();
+            $(".textos").show(200);
             estado = 1;
         }else{
             estado = 0;
-            $("#logo").hide();    
+            $("#logo").hide(200);    
             $(".textos").hide();
 
         }

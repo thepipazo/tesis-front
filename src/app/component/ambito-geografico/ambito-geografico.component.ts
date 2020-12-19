@@ -19,6 +19,7 @@ export class AmbitoGeograficoComponent implements OnInit {
 
   refomat: string;
   mostrar_boton: boolean;
+  filtroUser:string;
 
 
   constructor(private ambitoService: AmbitoGeograficoService) { }

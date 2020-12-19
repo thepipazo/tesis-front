@@ -22,6 +22,7 @@ export class ProcesoComponent implements OnInit {
 
   proceso: Proceso;
   estado: boolean = null;
+  filtroUser:string;
 
 
   constructor(private procesoService: ProcesoService) { }

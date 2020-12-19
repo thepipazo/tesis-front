@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="width: 100%; overflow: hidden;">
-  <div *ngIf="isLogged" class="hamburger">
+  <div *ngIf="isLogged" class="hamburger" >
     <div class="cta">
       <div id="btn" class="toggle-btn type14"></div>
     </div>
@@ -39,13 +39,13 @@
         <ul class="navbar-nav">
 
 
-          <div class="card desvanecimientoIsquierdo animacion">
-            <div class="card-header">
-              <h5 class="mb-0">
+          <div class="card  animacion">
+            <div class="card-header" [routerLink]="['menu']">
+              <h5 class="mb-0 a">
                 <a>
                   <mdb-icon [routerLink]="['/menu']" fas icon="home"></mdb-icon>
                 </a>
-                <a class="btn btn-link  textos" [routerLink]="['menu']">Inicio </a>
+                <a  class="btn btn-link  textos"  type="button" >Inicio </a>
               </h5>
             </div>
           </div>
@@ -54,44 +54,44 @@
           <div id="accordion" *ngIf="consultaRol(['admin'])">
             <div class="card ">
               <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
+                <h5 class="mb-0 a" >
                   <mdb-icon fas icon="tools" data-toggle="collapse" data-target="#collapseOne"></mdb-icon>
-                  <a class="btn btn-link textos" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                  <a  class="btn btn-link textos" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                     aria-controls="collapseOne">Administrador</a>
                 </h5>
               </div>
 
               <div id="collapseOne" class="collapse hide " aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
-                  <li class="text-dentro" [routerLink]="['/usuario']">
-                    <mdb-icon fas icon="user-alt"></mdb-icon> <button class="btn btn-link  textos">Usuarios</button>
+                  <li type="button" class="text-dentro" [routerLink]="['/usuario']">
+                    <mdb-icon fas icon="user-alt"></mdb-icon> <label  type="button" class=" b  textos">Usuarios</label>
                   </li>
 
 
-                  <li class="text-dentro" [routerLink]="['/rol']">
-                    <mdb-icon fas icon="clipboard-list"></mdb-icon> <button class="btn btn-link  textos">Roles</button>
+                  <li type="button" class="text-dentro" [routerLink]="['/debilidad']">
+                    <mdb-icon fas icon="thumbs-down"></mdb-icon> <label  type="button" class=" b  textos">Debilidades</label>
                   </li>
 
-                  <li class="text-dentro" [routerLink]="['/unidad']">
-                    <mdb-icon fas icon="clipboard-list"></mdb-icon> <button class="btn btn-link  textos">Unidades</button>
+                  <li  type="button" class="text-dentro" [routerLink]="['/unidad']">
+                    <mdb-icon fas icon="university"></mdb-icon> <label type="button" class=" b textos">Unidades</label>
                   </li>
 
-                  <li class="text-dentro" [routerLink]="['/criterio']">
-                    <mdb-icon fas icon="clipboard-list"></mdb-icon> <button class="btn btn-link  textos">Criterios</button>
+                  <li type="button" class="text-dentro" [routerLink]="['/criterio']">
+                    <mdb-icon fas icon="ruler"></mdb-icon> <label type="button" class=" b textos">Criterios</label>
                   </li>
 
-                  <li class="text-dentro" [routerLink]="['/proceso']">
-                    <mdb-icon fas icon="clipboard-list"></mdb-icon> <button class="btn btn-link  textos">Procesos</button>
+                  <li type="button" class="text-dentro" [routerLink]="['/proceso']">
+                    <mdb-icon fas icon="microchip"></mdb-icon> <label type="button" class=" b  textos">Procesos</label>
                   </li>
-                  <li class="text-dentro" [routerLink]="['/registro']">
-                    <mdb-icon fas icon="clipboard-list"></mdb-icon> <button class="btn btn-link  textos">Registros</button>
+                  <li type="button" class="text-dentro" [routerLink]="['/registro']">
+                    <mdb-icon fas icon="cash-register"></mdb-icon> <label type="button" class=" b  textos">Tipo De Registros</label>
                   </li>
 
-                  <li class="text-dentro" [routerLink]="['/ambito-geografico']">
-                    <mdb-icon fas icon="clipboard-list"></mdb-icon> <button class="btn btn-link  textos">Ambito Geografico</button>
+                  <li type="button" class="text-dentro" [routerLink]="['/ambito-geografico']">
+                    <mdb-icon far icon="flag"></mdb-icon> <label type="button" class=" b textos">Ambito Geografico</label>
                   </li>
-                  <li class="text-dentro" [routerLink]="['/ambito-academico']">
-                    <mdb-icon fas icon="clipboard-list"></mdb-icon> <button class="btn btn-link  textos">Ambito Academico</button>
+                  <li type="button" class="text-dentro" [routerLink]="['/ambito-academico']">
+                    <mdb-icon fas icon="graduation-cap"></mdb-icon> <label type="button" class=" b  textos">Ambito Academico</label>
                   </li>
                   
                   

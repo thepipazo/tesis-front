@@ -302,6 +302,34 @@ body{
 
 
 
+/*configuracion de los botones*/
+
+
+a.btn.btn-link.textos {
+    font-size: 20px;
+}
+li.text-dentro:focus {
+    outline: none;
+}
+
+.card-header:focus {
+    outline: none;
+}
+
+button.btn.btn-link.textos {
+    font-size: 19px;
+}
+
+.a{
+    height: 40px;
+    width: 252px;
+}
+.b{
+    font-size: 20px;
+    margin-left: 14px;
+}
+
+/*///////////////////// */
 
 
 

@@ -15,7 +15,7 @@ import { MenuprincipalComponent } from './modulos/menuprincipal/menuprincipal.co
 import { from } from 'rxjs';
 import { FooterComponent } from './modulos/footer/footer.component';
 import { UsuarioComponent } from './component/usuario/usuario.component';
-import { RolComponent } from './component/rol/rol.component';
+import { DebilidadComponent } from './component/debilidad/debilidad.component';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiltroPipe } from './pipes/filtro.pipe';
@@ -38,7 +38,7 @@ import { AmbitoAcademicoComponent } from './component/ambito-academico/ambito-ac
     MenuprincipalComponent,
     FooterComponent,
     UsuarioComponent,
-    RolComponent,
+    DebilidadComponent,
     FiltroPipe,
     LoginComponent,
     UnidadComponent,

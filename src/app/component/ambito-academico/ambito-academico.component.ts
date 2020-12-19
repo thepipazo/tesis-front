@@ -19,6 +19,7 @@ export class AmbitoAcademicoComponent implements OnInit {
   nuevoAmbito: Ambito;
   refomat: string;
   mostrar_boton: boolean;
+  filtroUser:string;
 
   constructor(private ambitoService : AmbitoAcademicoService) { }
 

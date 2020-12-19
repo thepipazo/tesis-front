@@ -55,8 +55,8 @@ export class UnidadService {
      
    }
 
-   public  listarUnidadesPorEstado() : Observable<Unidad[]>{
-    return this.http.get<Unidad[]>(this.API_SERVER+"/listUnidadEstadoTrue");
+   public  listarUnidadesPorEstado(estado:boolean) : Observable<Unidad[]>{
+    return this.http.get<Unidad[]>(this.API_SERVER+"/listUnidadEstado/"+estado);
      
 }
 }

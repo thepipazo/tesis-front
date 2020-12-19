@@ -47,7 +47,7 @@
                 <mdb-card-header>
                     <h3>Registros</h3>
                     <div class="md-form" id="buscador">
-                        <input mdbInput type="text" class="form-control">
+                        <input mdbInput [(ngModel)]="filtroUser" type="text" class="form-control">
                         <label for="form1" class="">Buscar Por ID</label>
                     </div>
                 </mdb-card-header>
@@ -65,7 +65,7 @@
                             </tr>
                         </thead>
                         <tbody style="overflow: auto;">
-                            <tr *ngFor="let item of registros"  id="registros" name="registros">
+                            <tr *ngFor="let item of registros  | filtro: 'tipo_registro':filtroUser" >
                                 <td><a>{{item.id}}</a></td>
                                 <td><a>{{item.tipo_registro}}</a></td>
                                 <td><a>{{estadoEntrante(item.estado)}}</a></td>

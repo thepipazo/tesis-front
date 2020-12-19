@@ -20,6 +20,7 @@ export class RegistroComponent implements OnInit {
   estado: boolean = null;
   mostrar_boton: boolean;
   refomat: string;
+  filtroUser:string;
 
   constructor( private registroServicio: RegistroService,) { }
   

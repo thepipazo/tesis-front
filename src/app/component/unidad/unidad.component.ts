@@ -24,6 +24,8 @@ export class UnidadComponent implements OnInit {
   nombre:string;
   estado:boolean;
   refomat:string;
+  filtroUser:string;
+
 
 
   estadoSeleccionados:string;

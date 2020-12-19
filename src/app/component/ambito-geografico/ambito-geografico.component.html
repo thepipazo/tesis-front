@@ -47,7 +47,7 @@
                 <mdb-card-header>
                     <h3>Ambitos geograficos</h3>
                     <div class="md-form" id="buscador">
-                        <input mdbInput type="text" class="form-control">
+                        <input mdbInput [(ngModel)]="filtroUser" type="text" class="form-control">
                         <label for="form1" class="">Buscar Por ID</label>
                     </div>
                 </mdb-card-header>
@@ -65,7 +65,7 @@
                             </tr>
                         </thead>
                         <tbody style="overflow: auto;">
-                            <tr *ngFor="let item of ambitos"  id="ambitos" name="ambitos">
+                            <tr *ngFor="let item of ambitos  | filtro: 'nombre_ambito':filtroUser" >
                                 <td><a>{{item.id}}</a></td>
                                 <td><a>{{item.nombre_ambito}}</a></td>
                                 <td><a>{{estadoEntrante(item.estado)}}</a></td>

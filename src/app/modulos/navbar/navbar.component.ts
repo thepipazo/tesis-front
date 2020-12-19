@@ -16,6 +16,8 @@ export class NavbarComponent implements OnInit {
   estado = ""
   user = "" ;
 
+  nav:boolean=false;
+
 
   realRol: string[] = [];
   rol: string;
@@ -102,6 +104,15 @@ export class NavbarComponent implements OnInit {
        return this.isRol;
     
     
+  }
+
+
+  navbar(): void{
+    if(this.nav == true){
+      this.nav = false;
+    }else{
+      this.nav = true;
+    }
   }
 
 

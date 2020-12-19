@@ -7,38 +7,46 @@
             <form #f="ngForm" (*ngSubmit)="create()">
                 <mdb-card style="height: 600px;">
                     <mdb-card-header>
-                        <h3>Registro De Criterio</h3>
+                        <h3>Registro De Debilidades</h3>
                     </mdb-card-header>
                     <mdb-card-body>
                         <div class="container">
-
-                            <div class="md-form">
-                                <input mdbInput type="text" name="codigo_Criterio" id="codigo_Criterio"
-                                    [(ngModel)]="codigo" class="form-control" required>
-                                <label for="codigo_Criterio" class="">Codigo Criterio</label>
+                            <div class="col-md-12 row"> 
+                            <div class="md-form col-md-6">
+                                <input mdbInput type="text" name="codigo" id="codigo" [(ngModel)]="codigo"
+                                    class="form-control" required>
+                                <label for="codigo" class="">Codigo Criterio</label>
                             </div>
-                            <div class="md-form ">
+                            <div class="md-form col-md-6">
                                 <input mdbInput type="text" name="nombre_criterio" id="nombre_criterio"
                                     [(ngModel)]="nombre" class="form-control" required>
                                 <label for="nombre_criterio" class="">Nombre Criterio</label>
                             </div>
-                            <div class="row col-md-12">
-                                <div class="md-form col-md-6">
-                                    <textarea  style="resize: none; overflow-y: auto; height: 1%;" name="descripcion"
-                                        [(ngModel)]="descripcion" id="descripcion" type="text" rows="3" maxlength="250"
-                                        [(ngModel)]="descripcion" class="md-textarea md-textarea-auto form-control"
-                                        mdbInput ></textarea>
-                                    <label for="descripcion">Descripcion </label>
-                                </div>
-                                <div class="md-form col-md-6">
-                                    <textarea  style="resize: none;" name="explicacion" id="explicacion" type="text"
-                                        rows="3" [(ngModel)]="explicacion" maxlength="250" [(ngModel)]="explicacion"
-                                        class="md-textarea md-textarea-auto form-control" mdbInput ></textarea>
-                                    <label for="descripcion">Descripcion </label>
-                                </div>
-                            </div>
 
-                            <select  *ngIf="mostrar_boton" class="browser-default custom-select" id="estados"
+                        </div>
+
+                            <div class="md-form col-md-12">
+                                <textarea style="resize: none; overflow-y: auto; height: 1%;" name="descripcion"
+                                    [(ngModel)]="descripcion" id="descripcion" type="text" rows="3" maxlength="250"
+                                    [(ngModel)]="descripcion" class="md-textarea md-textarea-auto form-control"
+                                    mdbInput></textarea>
+                                <label for="descripcion">Descripcion </label>
+                            </div>
+                            <div class="col-md-12 row " > </div>
+                            <label for="" class="col-md-5"> Criterios</label>
+                            <label for=""  class="col-md-5" > Unidades</label>
+
+                            <div class="col-md-12 row " >
+                                <select class="browser-default custom-select col-md-6" id="criterio" name="criterio"[(ngModel)]="criterio" required>
+                                    <option *ngFor="let item of criterios" [ngValue]="item" >{{item.nombre}}</option>
+
+                                </select>
+
+                                <select class="browser-default custom-select col-md-6"  id="unidad" name="unidad"[(ngModel)]="unidad" required>
+                                    <option *ngFor="let item of unidades" [ngValue]="item">{{item.nombre}}</option>
+                                </select>
+                            </div>
+                            <select *ngIf="mostrar_boton" class="browser-default custom-select" id="estados"
                                 name="estados" [(ngModel)]="estado" required>
                                 <option [ngValue]="true">ACTIVO</option>
                                 <option [ngValue]="false">INACTIVO</option>
@@ -53,10 +61,10 @@
                     </mdb-card-body>
                     <mdb-card-footer>
                         <button style="margin-left: 2%;" *ngIf="!mostrar_boton" mdbWavesEffect class="btn btn-success"
-                            [disabled]="!f.valid" type="button" (click)="create()" > Guardar </button>
+                            [disabled]="!f.valid" type="button" (click)="create()"> Guardar </button>
 
-                        <button [disabled]="!f.valid" mdbWavesEffect (click)="actualizar()" type="button" *ngIf="mostrar_boton"
-                            class="btn btn-primary">Editar</button>
+                        <button [disabled]="!f.valid" mdbWavesEffect (click)="actualizar()" type="button"
+                            *ngIf="mostrar_boton" class="btn btn-primary">Editar</button>
 
                         <button mdbWavesEffect style="float: right;" type="button" class="btn btn-warning"
                             (click)="reset()">Cancelar</button>
@@ -80,26 +88,28 @@
                     <table mdbTable hover="true" class="table-responsive-md  text-center">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Codigo</th>
                                 <th>Nombre</th>
+                                <th>Criterio</th>
+                                <th>Unidad</th>
                                 <th>estado</th>
                                 <th>Accion</th>
 
                             </tr>
                         </thead>
                         <tbody style="overflow: auto;">
-                            <tr *ngFor="let item of criterios | filtro: 'codigo':filtroUser">
-                                <td><a>{{item.id}}</a></td>
+                            <tr *ngFor="let item of debilidades | filtro: 'codigo':filtroUser" >
                                 <td><a>{{item.codigo}}</a></td>
                                 <td><a>{{item.nombre}}</a></td>
+                                <td><a>{{item.criterio.codigo}}</a></td>
+                                <td><a>{{item.unidad.codigo}}</a></td>
                                 <td><a>{{estadoEntrante(item.estado)}}</a></td>
 
 
                                 <td><button type="button" (click)="ver(item)" class="btn btn-info"
                                         mdbWavesEffect>Ver</button>
-                                    <button style="margin-left: 2%;" (click)="eliminar(item)" type="button" class="btn btn-danger"
-                                        mdbWavesEffect>Eliminar</button>
+                                    <button style="margin-left: 2%;" (click)="eliminar(item)" type="button"
+                                        class="btn btn-danger" mdbWavesEffect>Eliminar</button>
                                 </td>
 
                             </tr>
