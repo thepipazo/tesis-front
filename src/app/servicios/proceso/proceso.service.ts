@@ -21,6 +21,11 @@ export class ProcesoService {
      
    }
 
+   public  listarprocesosPorEsatado(estado:boolean) : Observable<Proceso[]>{
+    return this.http.get<Proceso[]>(this.API_SERVER+"/listPorEstado/"+estado);
+     
+   }
+
 
    create(proceso: Proceso) : Observable<Proceso>{
     return this.http.post(this.API_SERVER+"/guardar",proceso,{headers: this.httpHeaders}).pipe(

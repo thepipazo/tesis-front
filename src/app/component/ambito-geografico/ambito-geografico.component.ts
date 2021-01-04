@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AmbitoGeografico as Ambito} from 'src/app/clases/ambito-geografico';
 import { AmbitoGeograficoService } from 'src/app/servicios/ambitoG/ambito-geografico.service';
 import { FuncionesService } from 'src/app/servicios/funcionesbasicas/funciones.service';
@@ -23,7 +23,8 @@ export class AmbitoGeograficoComponent implements OnInit {
 
 
   constructor(private ambitoService: AmbitoGeograficoService) { }
-  
+  @ViewChild('closeAddExpenseModal') closeAddExpenseModal: ElementRef;
+
 
   ngOnInit(): void {
     this.listarTodos();
@@ -36,6 +37,7 @@ export class AmbitoGeograficoComponent implements OnInit {
       this.listarTodos();
       this.reset();
       Swal.fire('Guardado', `El nuevoAmbito ${this.nuevoAmbito.nombre_ambito} ha sido creado con exito`, 'success');
+      this.closeAddExpenseModal.nativeElement.click();
 
     })  }
 
@@ -82,6 +84,7 @@ Swal.fire({
       this.listarTodos();
       this.reset();
       Swal.fire('Guardado', `El nuevoAmbito ${this.nuevoAmbito.nombre_ambito} ha sido creado con exito`, 'success');
+      this.closeAddExpenseModal.nativeElement.click();
 
     })  }
   reset(): void {

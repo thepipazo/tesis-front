@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { Criterio } from 'src/app/clases/criterio';
 import { Debilidad } from 'src/app/clases/debilidad';
 import Swal from 'sweetalert2';
 
@@ -50,6 +51,12 @@ export class DebilidadService {
 
   public  listarTodos() : Observable<Debilidad[]>{
     return this.http.get<Debilidad[]>(this.API_SERVER+"/list");
+    
+     
+   }
+
+   public  listarTodosPorCriterio(criterio:number) : Observable<Debilidad[]>{
+    return this.http.get<Debilidad[]>(this.API_SERVER+"/listPorCriterio/"+criterio);
     
      
    }

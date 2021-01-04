@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Registro } from 'src/app/clases/registro';
 import { FuncionesService } from 'src/app/servicios/funcionesbasicas/funciones.service';
 import { RegistroService } from 'src/app/servicios/registro/registro.service';
@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
+  @ViewChild('closeAddExpenseModal') closeAddExpenseModal: ElementRef;
 
   registro:Registro;
   registros: Registro[];
@@ -66,6 +67,7 @@ export class RegistroComponent implements OnInit {
       this.listarTodos();
       this.reset();
       Swal.fire('Guardado', `El registro ${this.registro.tipo_registro} ha sido creado con exito`, 'success');
+      this.closeAddExpenseModal.nativeElement.click();
 
     })
   }
@@ -84,6 +86,7 @@ export class RegistroComponent implements OnInit {
       this.listarTodos();
       this.reset();
       Swal.fire('Guardado', `El registro ${this.registro.tipo_registro} ha sido creado con exito`, 'success');
+      this.closeAddExpenseModal.nativeElement.click();
 
     })
 

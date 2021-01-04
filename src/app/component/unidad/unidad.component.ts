@@ -1,13 +1,12 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { stringify } from '@angular/compiler/src/util';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { timeoutWith } from 'rxjs/operators';
+import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 import { Unidad } from 'src/app/clases/Unidad';
 import { TokenService } from 'src/app/servicios/authentication/token.service';
 import { UnidadService } from 'src/app/servicios/unidad/unidad.service';
 import Swal from 'sweetalert2';
+import { ViewChild, ElementRef} from '@angular/core';
+
 
 @Component({
   selector: 'app-unidad',
@@ -15,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./unidad.component.css']
 })
 export class UnidadComponent implements OnInit {
+  @ViewChild('closeAddExpenseModal') closeAddExpenseModal: ElementRef;
 
   unidad:Unidad;
   unidades: Unidad[];
@@ -35,19 +35,21 @@ export class UnidadComponent implements OnInit {
 
 
   constructor(
+    private cargaScripts: CargarScriptsService,
     public unidadServicio: UnidadService,
     public fb: FormBuilder,
     public token: TokenService,
-  ) { }
+  ) {cargaScripts.carga(["unidad/unidad"]);
+}
 
   ngOnInit(): void {
     this.listarUnidades();
-
-   
-
   }
 
 
+
+  exportAsXLSX(): void{
+  }
 
 
   reset() {
@@ -55,6 +57,8 @@ export class UnidadComponent implements OnInit {
     this.nombre="";
     this.code = "";
     this.mostrar_boton=false;
+
+    
   }
 
   listarUnidades() {
@@ -71,7 +75,11 @@ export class UnidadComponent implements OnInit {
       this.listarUnidades()
       this.reset();
       Swal.fire('Guardado', `La unidad ${this.unidad.nombre} ha sido creado con exito`,'success');
+      this.closeAddExpenseModal.nativeElement.click();
+
     });
+
+
   
   }
 
@@ -80,9 +88,12 @@ export class UnidadComponent implements OnInit {
     this.unidad = new  Unidad(this.id,this.code,this.nombre,this.estado);
 
     this.unidadServicio.actualizar(this.unidad).subscribe(unidad =>{
+
       this.listarUnidades();
       Swal.fire('Actualizado', `La unidad  ha sido actualizada con exito`,'success');
       this.reset();
+      this.closeAddExpenseModal.nativeElement.click();
+
     })
 
   }
@@ -136,5 +147,7 @@ export class UnidadComponent implements OnInit {
     this.estado = unidad.estado;
     this.mostrar_boton = true;
   }
+
+  
 
 }

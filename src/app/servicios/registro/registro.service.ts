@@ -21,6 +21,11 @@ export class RegistroService  {
      
    }
 
+   listarprocesosPorEstado(estado:boolean) : Observable<Registro[]>{
+    return this.http.get<Registro[]>(this.API_SERVER+"/listPorEstado/"+estado);
+     
+   }
+
    create(registro: Registro) : Observable<Registro>{
     return this.http.post(this.API_SERVER+"/guardar",registro,{headers: this.httpHeaders}).pipe(
       map((response:any) => response.registro as Registro ),

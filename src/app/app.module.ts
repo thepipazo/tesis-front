@@ -26,7 +26,14 @@ import { ProcesoComponent } from './component/proceso/proceso.component';
 import { RegistroComponent } from './component/registro/registro.component';
 import { AmbitoGeograficoComponent } from './component/ambito-geografico/ambito-geografico.component';
 import { AmbitoAcademicoComponent } from './component/ambito-academico/ambito-academico.component';
-
+import { EvidenciaComponent } from './component/evidencia/evidencia.component';
+import { ListComponent } from './component/evidencia/list/list.component';
+import { VerResponsableComponent } from './component/evidencia/ver-responsable/ver-responsable.component';
+import { VerDcaComponent } from './component/evidencia/ver-dca/ver-dca.component';
+import { ListResponsableComponent } from './component/evidencia/list-responsable/list-responsable.component';
+import { ListDcaComponent } from './component/evidencia/list-dca/list-dca.component';
+import { VerUsuarioComponent } from './component/evidencia/ver-usuario/ver-usuario.component';
+import { ListDirectorComponent } from './component/evidencia/list-director/list-director.component';
 
 
 //fin servicio
@@ -47,6 +54,14 @@ import { AmbitoAcademicoComponent } from './component/ambito-academico/ambito-ac
     RegistroComponent,
     AmbitoGeograficoComponent,
     AmbitoAcademicoComponent,
+    EvidenciaComponent,
+    ListComponent,
+    VerResponsableComponent,
+    VerDcaComponent,
+    ListResponsableComponent,
+    ListDcaComponent,
+    VerUsuarioComponent,
+    ListDirectorComponent,
 
   ],
   imports: [

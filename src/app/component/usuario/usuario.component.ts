@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/servicios/authentication/auth.service';
 import { TokenService } from 'src/app/servicios/authentication/token.service';
@@ -18,6 +18,9 @@ import { UnidadService } from 'src/app/servicios/unidad/unidad.service';
   styleUrls: ['./usuario.component.css']
 })
 export class UsuarioComponent implements OnInit {
+  @ViewChild('closeAddExpenseModal') closeAddExpenseModal: ElementRef;
+
+
   isRegistro = false;
   usuarios: NuevoUsuario[] = [];
   isRegistroFail = false;
@@ -32,13 +35,16 @@ export class UsuarioComponent implements OnInit {
   isLogged = false;
   mostrar_boton = true;
   filtroUser = '';
-  roles: Rol[];
-  rolesSeleccionados :string = null;
+  roles: Rol[] = [];
+  rolesSeleccionados :Rol[];
+  rolesSubmit: string[] = [];
+
+  rs:string[] = [];
+
   unidadSeleccionada: Unidad;
   isRoles = false;
   unidades:Unidad[];
 
-  rolesPrecargados:  string;
   
  
   constructor(
@@ -56,9 +62,7 @@ export class UsuarioComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-
-   
+  ngOnInit(): void {   
 
     if (this.tokenService.getToken()) {
       this.listarUsuarios();
@@ -69,12 +73,7 @@ export class UsuarioComponent implements OnInit {
   }
 
  
-  compararNombres( rol:Rol, rol2:any) {
-    if (rol==null || rol2==null) {
-      return false;
-    }
-    return rol.rolNombre===rol2.rolNombre;
-  }
+ 
 
 activarRoles(): void{
   if(this.isRoles){
@@ -94,13 +93,18 @@ activarRoles(): void{
 
    }else{
 
+    this.rolesSeleccionados.forEach(resp => {
+      this.rolesSubmit.push(resp.rolNombre);
+    });
 
-    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSeleccionados,this.unidadSeleccionada);
+
+    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSubmit,this.unidadSeleccionada);
     this.authservice.nuevo(this.nuevoUsuario).subscribe(data => {
       this.authservice.listarTodoLosUser().subscribe(resp => {
         this.usuarios = resp;
       }, error => { console.error(error) });
       swal.fire('Guardado', `El usuario ${this.nuevoUsuario.nombre} ha sido creado con exito`, 'success');
+      this.closeAddExpenseModal.nativeElement.click();
 
       this.reset();
 
@@ -108,10 +112,6 @@ activarRoles(): void{
       err => {
         this.errMsj = err.error.mensaje;
         swal.fire('Error', ` ${this.errMsj}`, 'warning');
-
-
-
-
       }
 
     );
@@ -122,7 +122,7 @@ activarRoles(): void{
 
 
   ver(usuario: NuevoUsuario): void {
-
+    this.rolesSubmit = [];
     this.userRut = usuario.rut;
     this.nombre = usuario.nombre;
     this.apellido = usuario.apellido;
@@ -130,10 +130,24 @@ activarRoles(): void{
     this.userId = usuario.id;
     this.nombreUsuario = usuario.nombreUsuario;
     this.mostrar_boton = false;
-    this.rolesPrecargados = usuario.roles;
     this.unidadSeleccionada = usuario.unidad;
-    
+    this.rolesSeleccionados  = usuario.roles;
+
+    this.rolesSeleccionados.forEach(resp => {
+      this.rolesSubmit.push(resp.rolNombre);
+    });
+console.log(this.rolesSubmit)
+     
   }
+
+ a():void{
+  this.rolesSubmit = [];
+
+  this.rolesSeleccionados.forEach(resp => {
+    this.rolesSubmit.push(resp.rolNombre);
+  });
+ }
+
 
 
   listarUsuarios(): void {
@@ -145,7 +159,10 @@ activarRoles(): void{
 
   listarRoles(): void {
     this.authservice.listarTodoLosRoles().subscribe(resp => {
-      this.roles = resp;
+      resp.forEach(resp => {
+        this.roles.push(resp);
+
+      });
     })
 
   }
@@ -167,20 +184,27 @@ activarRoles(): void{
     this.mostrar_boton = true;
     this.unidadSeleccionada = null;
     this.rolesSeleccionados = null;
+    this.rolesSubmit = [];
+
   }
 
   editar() {
-    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSeleccionados,this.unidadSeleccionada);
-    console.log(this.nuevoUsuario);
+    this.rolesSubmit = [];
+    this.rolesSeleccionados.forEach(resp => {
+      this.rolesSubmit.push(resp.rolNombre);
+    });
+    console.log(this.rolesSubmit);
+
+    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSubmit,this.unidadSeleccionada);
     this.authservice.actualizar(this.nuevoUsuario).subscribe(usuario => {
       this.authservice.listarTodoLosUser().subscribe(resp => {
-        this.usuarios = resp;
+        this.usuarios = resp;        
       });
 
       swal.fire('Actualizado', `El usuario  ha sido actualizado con exito`, 'success');
-      this.reset();
-      this.mostrar_boton = true;
-
+        this.reset();
+        this.mostrar_boton = true;
+        this.closeAddExpenseModal.nativeElement.click();
 
     });
   }
@@ -209,6 +233,9 @@ activarRoles(): void{
        
       }
     })
+  }
+  compare(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
 

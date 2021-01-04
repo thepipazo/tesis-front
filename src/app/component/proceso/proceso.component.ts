@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Proceso } from 'src/app/clases/proceso';
 import { ProcesoService } from 'src/app/servicios/proceso/proceso.service';
 import Swal from 'sweetalert2';
@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./proceso.component.css']
 })
 export class ProcesoComponent implements OnInit {
+  @ViewChild('closeAddExpenseModal') closeAddExpenseModal: ElementRef;
 
 
   procesos: Proceso[];
@@ -49,6 +50,8 @@ export class ProcesoComponent implements OnInit {
       this.listarProcesos()
       this.reset();
       Swal.fire('Guardado', `La proceso ${this.proceso.nombre_proceso} ha sido creado con exito`, 'success');
+      this.closeAddExpenseModal.nativeElement.click();
+
     });
 
 
@@ -61,6 +64,8 @@ export class ProcesoComponent implements OnInit {
       this.listarProcesos();
       Swal.fire('Actualizado', `El proceso  ha sido actualizada con exito`,'success');
       this.reset();
+      this.closeAddExpenseModal.nativeElement.click();
+
     })
    }
 

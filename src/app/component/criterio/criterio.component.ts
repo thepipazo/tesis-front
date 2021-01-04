@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Criterio } from 'src/app/clases/criterio';
 import { CriterioService } from 'src/app/servicios/criterio/criterio.service';
 import Swal from 'sweetalert2';
@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./criterio.component.css']
 })
 export class CriterioComponent implements OnInit {
+  @ViewChild('closeAddExpenseModal') closeAddExpenseModal: ElementRef;
 
   criterios: Criterio[];
   mostrar_boton :boolean = false;
@@ -49,7 +50,10 @@ export class CriterioComponent implements OnInit {
       this.listarCriterios();
       this.reset();
       console.log(this.criterio);
-      Swal.fire('Guardado', `El criterio ${this.criterio.nombre} ha sido creado con exito`,'success');    })
+      Swal.fire('Guardado', `El criterio ${this.criterio.nombre} ha sido creado con exito`,'success'); 
+      this.closeAddExpenseModal.nativeElement.click();
+
+       })
 
   }
 
@@ -62,7 +66,10 @@ console.log(this.criterio);
       
       this.listarCriterios();
       this.reset();
-      Swal.fire('Actualizado', `El criterio  ${this.criterio.nombre} ha sido creado con exito`,'success');    })
+      Swal.fire('Actualizado', `El criterio  ${this.criterio.nombre} ha sido creado con exito`,'success'); 
+      this.closeAddExpenseModal.nativeElement.click();
+
+       })
 
 
   }

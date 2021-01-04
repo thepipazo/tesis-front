@@ -11,6 +11,15 @@ import { ProcesoComponent } from './component/proceso/proceso.component';
 import { RegistroComponent } from './component/registro/registro.component';
 import { AmbitoGeograficoComponent } from './component/ambito-geografico/ambito-geografico.component';
 import { AmbitoAcademicoComponent } from './component/ambito-academico/ambito-academico.component';
+import { EvidenciaComponent } from './component/evidencia/evidencia.component';
+import { ListComponent } from './component/evidencia/list/list.component';
+import { VerResponsableComponent } from './component/evidencia/ver-responsable/ver-responsable.component';
+import { VerDcaComponent } from './component/evidencia/ver-dca/ver-dca.component';
+import { ListResponsableComponent } from './component/evidencia/list-responsable/list-responsable.component';
+import { ListDcaComponent } from './component/evidencia/list-dca/list-dca.component';
+import { VerUsuarioComponent } from './component/evidencia/ver-usuario/ver-usuario.component';
+import { EvidenciaService } from './servicios/evidencia/evidencia.service';
+import { ListDirectorComponent } from './component/evidencia/list-director/list-director.component';
 
 
 
@@ -26,6 +35,17 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'ambito-geografico', component: AmbitoGeograficoComponent },
   { path: 'ambito-academico', component: AmbitoAcademicoComponent },
+  { path: 'evidencia/nueva-evidencia', component: EvidenciaComponent },
+  { path: 'evidencia/ver-evidencia-responsable', component: VerResponsableComponent },
+  { path: 'evidencia/ver-evidencia-dca', component: VerDcaComponent },
+  { path: 'evidencia/ver-evidencia-usuario', component: VerUsuarioComponent },
+  { path: 'evidencia', component: ListComponent },
+  { path: 'evidencia-director', component: ListDirectorComponent},
+  { path: 'evidencia-responsable', component: ListResponsableComponent },
+  { path: 'evidencia-dca', component: ListDcaComponent },
+
+
+
 
 
 

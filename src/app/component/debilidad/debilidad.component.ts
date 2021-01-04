@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CargarScriptsService } from 'src/app/cargar-scripts.service';
 import { Criterio } from 'src/app/clases/criterio';
@@ -19,8 +19,10 @@ import swal from 'sweetalert2';
   templateUrl: './debilidad.component.html',
   styleUrls: ['./debilidad.component.css']
 })
-export class DebilidadComponent implements OnInit
- {
+export class DebilidadComponent implements OnInit {
+  @ViewChild('closeAddExpenseModal') closeAddExpenseModal: ElementRef;
+
+  
   debilidades: Debilidad[];
   criterios: Criterio[];
   unidades: Unidad[];
@@ -36,8 +38,8 @@ export class DebilidadComponent implements OnInit
   nombre: string;
   descripcion: string;
   estado: boolean;
-  criterio: Criterio ;
-  unidad: Unidad;
+  criterio: Criterio = null;
+  unidad: Unidad = null;
 
   constructor(
     public debilidadServicio: DebilidadService,
@@ -62,6 +64,7 @@ export class DebilidadComponent implements OnInit
       this.listarTodos();
       this.reset();
       Swal.fire('Guardado', `El ambito academico ${this.nuevadebilidad.nombre} ha sido creado con exito`, 'success');
+      this.closeAddExpenseModal.nativeElement.click();
 
     })  }
 
@@ -111,7 +114,7 @@ Swal.fire({
   }
 
   listarCriteriosTrue(estado:boolean): void {
-    this.criterioService.listarCriteriosTrue(estado).subscribe(resp =>{
+    this.criterioService.listarCriteriosEstado(estado).subscribe(resp =>{
       this.criterios = resp;
     })
   }
@@ -129,6 +132,7 @@ Swal.fire({
       this.listarTodos();
       this.reset();
       Swal.fire('Guardado', `El nuevadebilidad ${this.nuevadebilidad.nombre} ha sido creado con exito`, 'success');
+      this.closeAddExpenseModal.nativeElement.click();
 
     })  }
   reset(): void {
@@ -151,7 +155,9 @@ Swal.fire({
     return this.refomat; 
    }
 
-
+   compare(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
 
 }
 

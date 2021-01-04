@@ -54,8 +54,8 @@ export class AmbitoAcademicoService {
      
    }
 
-   public  listarPorEstado() : Observable<AmbitoAcademico[]>{
-    return this.http.get<AmbitoAcademico[]>(this.API_SERVER+"/listAmbitoAcademicoEstadoTrue");
+   public  listarPorEstado(estado:boolean) : Observable<AmbitoAcademico[]>{
+    return this.http.get<AmbitoAcademico[]>(this.API_SERVER+"/listPorEstado/"+estado);
      
 
 }

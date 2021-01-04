@@ -1,3 +1,4 @@
+import { Rol } from "./Rol";
 import { Unidad } from "./Unidad";
 
 export class NuevoUsuario {
@@ -7,11 +8,11 @@ export class NuevoUsuario {
     apellido: string;
     nombreUsuario: string;
     password: string;
-    roles: string;
+    roles: any[];
     unidad: Unidad;
 
     
-    constructor(id : number,rut : string,nombre:string, apellido :string, nombreUsuario:string,password:string , roles : string, unidad : Unidad){
+    constructor(id : number,rut : string,nombre:string, apellido :string, nombreUsuario:string,password:string , roles : any[], unidad : Unidad){
         this.id = id;
         this.rut = rut;
         this.nombre = nombre;

@@ -1,0 +1,52 @@
+<div class="container col-md-10" style="margin-top: 1%; height: auto;">
+    <mdb-card style="height: 700px;">
+        <mdb-card-header>
+            <h3>Evidencias</h3>
+          
+                <div class="md-form  col-md-11" id="buscador">
+                    <input mdbInput type="text" [(ngModel)]="filtroUser" class="form-control">
+                    <label for="form1" class="">Buscar Por Codigo</label>
+
+                </div>
+
+           
+        </mdb-card-header>
+
+        <mdb-card-body style="overflow-y: auto;">
+
+            <table mdbTable hover="true" class="table-responsive-md  text-center">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Proceso</th>
+                        <th>Tipo De Registro</th>
+                        <th>Debilidad</th>
+                        <th>Criterio</th>
+                        <th>estado</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+
+                <tbody style="overflow: auto;">
+                    <tr *ngFor="let evi of evidencias">
+                        <td><a>{{evi.codigo}}</a></td>
+                        <td><a>{{evi.proceso.nombre_proceso}}</a></td>
+                        <td><a>{{evi.registro.tipo_registro}}</a></td>
+                        <td><a>{{evi.debilidad.nombre}}</a></td>
+                        <td><a>{{evi.criterio.nombre}}</a></td>
+
+                        <td *ngIf="evi.estadoResponsable == 'En Espera'"><mdb-card style="background-color: rgb(219, 151, 24);"> <a>{{evi.estadoResponsable}}</a> </mdb-card></td>
+                        <td *ngIf="evi.estadoResponsable == 'Rechazado'"><a>{{evi.estadoResponsable}}</a></td>
+                        <td *ngIf="evi.estadoResponsable == 'Aprobado'"> <a>{{evi.estadoResponsable}}</a></td>
+
+
+                        <td>
+                            <button type="button" data-toggle="modal" [routerLink]="['/evidencia/ver-evidencia-responsable',evi]"   class="btn btn-info" mdbWavesEffect>Ver</button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </mdb-card-body>
+    </mdb-card>
+</div>

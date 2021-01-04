@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AmbitoAcademico as Ambito } from 'src/app/clases/ambito-academico';
 import { AmbitoAcademicoService } from 'src/app/servicios/ambitoAcademico/ambito-academico.service';
 import { FuncionesService } from 'src/app/servicios/funcionesbasicas/funciones.service';
@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./ambito-academico.component.css']
 })
 export class AmbitoAcademicoComponent implements OnInit {
+  @ViewChild('closeAddExpenseModal') closeAddExpenseModal: ElementRef;
 
  
   id: number;
@@ -33,6 +34,7 @@ export class AmbitoAcademicoComponent implements OnInit {
       this.listarTodos();
       this.reset();
       Swal.fire('Guardado', `El ambito academico ${this.nuevoAmbito.nombreAmbito} ha sido creado con exito`, 'success');
+      this.closeAddExpenseModal.nativeElement.click();
 
     })  }
 
@@ -79,6 +81,7 @@ Swal.fire({
       this.listarTodos();
       this.reset();
       Swal.fire('Guardado', `El nuevoAmbito ${this.nuevoAmbito.nombreAmbito} ha sido creado con exito`, 'success');
+      this.closeAddExpenseModal.nativeElement.click();
 
     })  }
   reset(): void {

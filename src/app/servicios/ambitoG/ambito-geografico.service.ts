@@ -53,8 +53,8 @@ export class AmbitoGeograficoService {
      
    }
 
-   public  listarPorEstado() : Observable<AmbitoGeografico[]>{
-    return this.http.get<AmbitoGeografico[]>(this.API_SERVER+"/listAmbitoGeograficoEstadoTrue");
+   public  listarPorEstado(estado:boolean) : Observable<AmbitoGeografico[]>{
+    return this.http.get<AmbitoGeografico[]>(this.API_SERVER+"/listPorEstado/"+estado);
      
 }
   

@@ -6,6 +6,7 @@ import { JwtDto } from 'src/app/clases/jwt-dto';
 import { NuevoUsuario } from 'src/app/clases/nuevo-Usuario';
 import { map,catchError } from 'rxjs/operators';
 import Swal from'sweetalert2';
+import { Rol } from 'src/app/clases/Rol';
 
 
 @Injectable({
@@ -32,8 +33,13 @@ export class AuthService {
     return this.httpClient.get<any>(this.authUrl+"/list");
      
    }
-   public  listarTodoLosRoles() : Observable<any>{
-    return this.httpClient.get<any>(this.authUrl+"/listRol");
+
+   public  buscarPorEmail(email:string) : Observable<NuevoUsuario>{
+    return this.httpClient.get<NuevoUsuario>(this.authUrl+"/buscarLogeado/"+email);
+     
+   }
+   public  listarTodoLosRoles() : Observable<Rol[]>{
+    return this.httpClient.get<Rol[]>(this.authUrl+"/listRol");
      
    }
 

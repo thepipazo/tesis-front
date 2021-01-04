@@ -20,7 +20,7 @@ export class CriterioService {
      
    }
 
-   public  listarCriteriosTrue(estado:boolean) : Observable<Criterio[]>{
+   public  listarCriteriosEstado(estado:boolean) : Observable<Criterio[]>{
     return this.http.get<Criterio[]>(this.API_SERVER+"/listEstado/"+estado);
      
    }
