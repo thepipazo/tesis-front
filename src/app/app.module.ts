@@ -34,6 +34,10 @@ import { ListResponsableComponent } from './component/evidencia/list-responsable
 import { ListDcaComponent } from './component/evidencia/list-dca/list-dca.component';
 import { VerUsuarioComponent } from './component/evidencia/ver-usuario/ver-usuario.component';
 import { ListDirectorComponent } from './component/evidencia/list-director/list-director.component';
+import { BarraComponent } from './component/graficos/barra/barra.component';
+import { ChartsModule } from 'ng2-charts';
+import { ListDirectorUnidadComponent } from './component/evidencia/list-director/list-director-unidad/list-director-unidad.component';
+import { MiPerfilComponent } from './component/mi-perfil/mi-perfil.component';
 
 
 //fin servicio
@@ -62,6 +66,9 @@ import { ListDirectorComponent } from './component/evidencia/list-director/list-
     ListDcaComponent,
     VerUsuarioComponent,
     ListDirectorComponent,
+    BarraComponent,
+    ListDirectorUnidadComponent,
+    MiPerfilComponent,
 
   ],
   imports: [
@@ -72,7 +79,7 @@ import { ListDirectorComponent } from './component/evidencia/list-director/list-
     NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    ChartsModule
 
   ],
   providers: [

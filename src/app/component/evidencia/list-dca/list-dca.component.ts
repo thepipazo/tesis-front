@@ -13,22 +13,28 @@ export class ListDcaComponent implements OnInit {
   evidencias:Evidencia[];
 
   filtroUser:string;
-
+  mostrar:number=1;
 
   constructor(
     private evidenciaServicio:EvidenciaService,
     private ruta:Router) { }
 
   ngOnInit(): void {
-    this.listarEvidencias();
+    this.listarEvidencias(1);
   }
 
-  listarEvidencias():void{
-    this.evidenciaServicio.buscarPorEstadoDac().subscribe(resp =>{
+  listarEvidencias(estado:number):void{
+    this.evidenciaServicio.buscarPorEstadoDac(estado).subscribe(resp =>{
       console.log(resp);
       this.evidencias = resp;
     })
   }
+
+
+  compare(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
+
 
 
 }

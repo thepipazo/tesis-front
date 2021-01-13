@@ -334,6 +334,11 @@ button.btn.btn-link.textos {
 
 
 
+@media print{
+    .oculto-impresion, .oculto-impresion *{
+      display: none !important;
+    }
+  }
 
 
 

@@ -315,7 +315,7 @@ export class VerResponsableComponent implements OnInit {
     }
     else{
 
-    this.evidencia = new Evidencia(this.id, this.folio, this.descripcion, this.resultado, this.almacenamiento, this.presonaRelacionada, this.palabraClave, this.nombreCorto, 'Rechazado',
+    this.evidencia = new Evidencia(this.id, this.folio, this.descripcion, this.resultado, this.almacenamiento, this.presonaRelacionada, this.palabraClave, this.nombreCorto, 'Rechazado por responsable',
       this.observacionResponsable, this.observacionDac, this.usuario, this.responsable, this.dca, this.debilidade, this.unidad, this.regristro, this.ambitoAcademico,
       this.ambitoGeografico, this.proceso, this.criterio, this.numeroPlan, 'Rechazado', 'Rechazado',this.autoridadesI,this.administrativosI,this.docentesI,this.estudiantesI,
       this.autoridadesE,this.administrativosE,this.docentesE,this.estudiantesE);

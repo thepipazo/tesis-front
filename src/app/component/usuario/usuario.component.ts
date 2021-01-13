@@ -31,9 +31,10 @@ export class UsuarioComponent implements OnInit {
   apellido: string;
   nombreUsuario: string;
   password: string;
+  estado:boolean = true;
   errMsj: string;
   isLogged = false;
-  mostrar_boton = true;
+  mostrar_boton:boolean = false;
   filtroUser = '';
   roles: Rol[] = [];
   rolesSeleccionados :Rol[];
@@ -46,7 +47,7 @@ export class UsuarioComponent implements OnInit {
   unidades:Unidad[];
 
   
- 
+
   constructor(
     private cargaScripts: CargarScriptsService,
     private tokenService: TokenService,
@@ -98,7 +99,7 @@ activarRoles(): void{
     });
 
 
-    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSubmit,this.unidadSeleccionada);
+    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSubmit,this.unidadSeleccionada,true);
     this.authservice.nuevo(this.nuevoUsuario).subscribe(data => {
       this.authservice.listarTodoLosUser().subscribe(resp => {
         this.usuarios = resp;
@@ -129,9 +130,10 @@ activarRoles(): void{
     this.password = usuario.password;
     this.userId = usuario.id;
     this.nombreUsuario = usuario.nombreUsuario;
-    this.mostrar_boton = false;
+    this.mostrar_boton = true;
     this.unidadSeleccionada = usuario.unidad;
     this.rolesSeleccionados  = usuario.roles;
+    this.estado = usuario.estado;
 
     this.rolesSeleccionados.forEach(resp => {
       this.rolesSubmit.push(resp.rolNombre);
@@ -181,7 +183,7 @@ console.log(this.rolesSubmit)
     this.nombreUsuario = "";
     this.password = "";
     this.userId = null;
-    this.mostrar_boton = true;
+    this.mostrar_boton = false;
     this.unidadSeleccionada = null;
     this.rolesSeleccionados = null;
     this.rolesSubmit = [];
@@ -195,7 +197,7 @@ console.log(this.rolesSubmit)
     });
     console.log(this.rolesSubmit);
 
-    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSubmit,this.unidadSeleccionada);
+    this.nuevoUsuario = new NuevoUsuario(this.userId,this.userRut, this.nombre, this.apellido, this.nombreUsuario, this.password,this.rolesSubmit,this.unidadSeleccionada,this.estado);
     this.authservice.actualizar(this.nuevoUsuario).subscribe(usuario => {
       this.authservice.listarTodoLosUser().subscribe(resp => {
         this.usuarios = resp;        

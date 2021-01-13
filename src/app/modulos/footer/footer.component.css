@@ -28,3 +28,11 @@ a:hover{
 .bottom .copyright p, .bottom .copyright a:hover{
     color: #6c6d83;
 }
+
+
+
+@media print{
+    .oculto-impresion, .oculto-impresion *{
+      display: none !important;
+    }
+  }

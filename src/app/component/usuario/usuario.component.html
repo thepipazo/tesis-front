@@ -1,4 +1,4 @@
-<div class="container col-md-8" style="margin-top: 1%; height: auto;">
+<div class="container col-md-10" style="margin-top: 1%; height: auto;">
     <mdb-card style="height: 700px;">
         <mdb-card-header>
             <h3>Usuarios</h3>
@@ -42,10 +42,15 @@
                         <td>{{item.unidad.nombre}}</td>
 
 
-                        <td><button type="button" (click)="ver(item)" data-toggle="modal" data-target="#exampleModal"
-                                class="btn btn-info" mdbWavesEffect>Ver</button>
-                            <button style="margin-left: 2%;" (click)="eliminar(item)" type="button"
-                                class="btn btn-danger" mdbWavesEffect>Eliminar</button>
+                        <td>
+
+                            <span type="button" (click)="ver(item)" data-toggle="modal" data-target="#exampleModal">
+                                <mdb-icon far size="2x" icon="eye" class="brown-text"></mdb-icon>
+                            </span>
+                            <span type="button" (click)="eliminar(item)">
+                                <mdb-icon far icon="trash-alt" class="red-text ml-3" size="2x"></mdb-icon>
+                            </span>
+
                         </td>
 
                     </tr>
@@ -72,7 +77,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="width: 150%; left: -20%;">
                 <div class="modal-header">
-                    <h3>Registro De Unidades</h3>
+                    <h3>Registro De Usuarios</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -83,7 +88,7 @@
                     <div class="container">
 
                         <div class="md-form" style="width:100%;">
-                            <input mdbInput type="text" [disabled]="!mostrar_boton" [(ngModel)]="userRut" width="100%"
+                            <input mdbInput type="text" [disabled]="mostrar_boton" [(ngModel)]="userRut" width="100%"
                                 name="rut_user" id="rut_user" class="form-control" required>
                             <label for="id" class="">Rut</label>
                         </div>
@@ -104,7 +109,7 @@
                                 id="email" class="form-control" required>
                             <label for="email" style="left: auto;" class="">Email</label>
                         </div>
-                        <div class="md-form" style="width:100%;" *ngIf="mostrar_boton">
+                        <div class="md-form" style="width:100%;" *ngIf="!mostrar_boton">
                             <input mdbInput type="password" [(ngModel)]="password" style="width:100%" name="password"
                                 id="password" class="form-control" required>
                             <label for="password" class="">Password</label>
@@ -114,8 +119,8 @@
 
                         <mdb-card style="margin-bottom:3% ;">
 
-                            <select required [compareWith]="compare" class="browser-default custom-select" id="unidad" name="unidad"
-                                [(ngModel)]="unidadSeleccionada">
+                            <select required [compareWith]="compare" class="browser-default custom-select" id="unidad"
+                                name="unidad" [(ngModel)]="unidadSeleccionada">
                                 <option *ngFor="let unidades of unidades" [ngValue]="unidades">{{unidades.nombre}}
                                 </option>
 
@@ -123,17 +128,24 @@
 
                         </mdb-card>
                         <label for="unidad" class="">Roles</label>
-
                         <mdb-card>
                             <input style="width: 100%;" type="button" value="'ctrl + click' para multi seleccion ">
                             <div class="card">
-                                <select (click)="a()" multiple [compareWith]="compare"  class="browser-default custom-select"  id="roles" name="roles"
-                                [(ngModel)]="rolesSeleccionados" required>
-                                <option *ngFor="let roles of roles" [ngValue]="roles">{{roles.rolNombre}}</option>
-                            </select>
+                                <select (click)="a()" multiple [compareWith]="compare"
+                                    class="browser-default custom-select" id="roles" name="roles"
+                                    [(ngModel)]="rolesSeleccionados" required>
+                                    <option *ngFor="let roles of roles" [ngValue]="roles">{{roles.rolNombre}}</option>
+                                </select>
                                 <input disabled style="width: 100%;" type="text" placeholder="{{rolesSubmit}}">
                             </div>
                         </mdb-card>
+                        <label for="unidad" class="" *ngIf="mostrar_boton" style="margin-top: 2%;">Estado</label>
+                        <select  *ngIf="mostrar_boton" class="browser-default custom-select"  id="estado" name="estado"
+                            [(ngModel)]="estado" required>
+                            <option [ngValue]="true">ACTIVO</option>
+                            <option [ngValue]="false">INACTIVO</option>
+
+                        </select>
                     </div>
 
 
@@ -142,9 +154,9 @@
                 </div>
                 <div class="modal-footer">
                     <button style="margin-left: 2%;" mdbWavesEffect class="btn btn-success" type="button" type="submit"
-                        (click)="onRegistro()" [disabled]="!f.valid" *ngIf="mostrar_boton"> Guardar </button>
+                        (click)="onRegistro()" [disabled]="!f.valid" *ngIf="!mostrar_boton"> Guardar </button>
 
-                    <button mdbWavesEffect *ngIf="mostrar_boton == false" type="button" class="btn btn-primary"
+                    <button mdbWavesEffect *ngIf="mostrar_boton" type="button" class="btn btn-primary"
                         (click)="editar()" [disabled]="!f.valid">Editar</button>
 
                     <button mdbWavesEffect (click)="reset()" style="float: right;" type="button" data-dismiss="modal"

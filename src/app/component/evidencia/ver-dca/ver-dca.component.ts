@@ -293,7 +293,7 @@ RechazarResponsable(): void {
 
     }
     else{
-  this.evidencia = new Evidencia(this.id, this.folio, this.descripcion, this.resultado, this.almacenamiento,this.presonaRelacionada, this.palabraClave,this.nombreCorto, 'Rechazado',
+  this.evidencia = new Evidencia(this.id, this.folio, this.descripcion, this.resultado, this.almacenamiento,this.presonaRelacionada, this.palabraClave,this.nombreCorto, 'Rechazado por dca',
     this.observacionResponsable, this.observacionDac, this.usuario, this.responsable,this.dca, this.debilidade, this.unidad, this.regristro, this.ambitoAcademico,
     this.ambitoGeografico, this.proceso, this.criterio, this.numeroPlan,'Aprobado','Rechazado',this.autoridadesI,this.administrativosI,this.docentesI,this.estudiantesI,this.autoridadesE,
     this.administrativosE,this.docentesE,this.estudiantesE);

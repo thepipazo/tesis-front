@@ -10,9 +10,11 @@ export class NuevoUsuario {
     password: string;
     roles: any[];
     unidad: Unidad;
+    estado:boolean;
 
     
-    constructor(id : number,rut : string,nombre:string, apellido :string, nombreUsuario:string,password:string , roles : any[], unidad : Unidad){
+    constructor(id : number,rut : string,nombre:string, apellido :string, nombreUsuario:string,password:string , roles : any[], unidad : Unidad,estado:boolean
+        ){
         this.id = id;
         this.rut = rut;
         this.nombre = nombre;
@@ -21,6 +23,7 @@ export class NuevoUsuario {
         this.password = password;
         this.roles = roles;
         this.unidad = unidad;
+        this.estado = estado;
     } 
 
 }

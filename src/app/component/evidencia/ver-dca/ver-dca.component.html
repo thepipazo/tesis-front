@@ -325,11 +325,11 @@
         </div>
         <mdb-card-footer style=" margin-top: 4%;">
              
-                    <button  type="button"  *ngIf="permisoDca && estado == 'En Espera'" (click)="aprobarResponsable()"  class="btn btn-info"  mdbWavesEffect>Aprobar Por Dca</button>
+                    <button  type="button"   (click)="aprobarResponsable()"  class="btn btn-info"  mdbWavesEffect>Aprobar Por Dca</button>
         
                
                 
-                    <button style="float: right;" *ngIf="permisoDca && estado == 'En Espera'" (click)="RechazarResponsable()" type="button"  class="btn btn-danger"  mdbWavesEffect>Rechazar Por Dca</button>
+                    <button style="float: right;" (click)="RechazarResponsable()" type="button"  class="btn btn-danger"  mdbWavesEffect>Rechazar Por Dca</button>
         </mdb-card-footer>
     </mdb-card>
  

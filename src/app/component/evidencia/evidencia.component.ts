@@ -271,6 +271,7 @@ export class EvidenciaComponent implements OnInit {
         this.router.navigate(['/evidencia']);
 
     });
+    console.log(this.evidencia)
   }
 
 

@@ -1,4 +1,4 @@
-<div class="container col-md-8" style="margin-top: 1%; height: auto;">
+<div class="container col-md-10" style="margin-top: 1%; height: auto;">
     <mdb-card style="height: 700px;">
         <mdb-card-header>
             <h3>Unidades</h3>
@@ -14,11 +14,7 @@
                     <label for="form1" class="">Buscar Por Codigo</label>
 
                 </div>
-                <div class="col-md-1">
-                    <button id="btn" style="margin-top: 30%;" (click)="exportAsXLSX()" name="btn" class="btn btn-danger" >
-                      EXPORT  <i class="fas fa-file-excel"></i>
-                    </button>
-                </div>
+                
 
             </div>
         </mdb-card-header>
@@ -39,11 +35,13 @@
                         <td><a>{{item.codigo}}</a></td>
                         <td><a>{{item.nombre}}</a></td>
                         <td><a>{{estadoEntrante(item.estado)}}</a></td>
-                        <td><button type="button" data-toggle="modal" data-target="#exampleModal" (click)="ver(item)"
-                                class="btn btn-info" mdbWavesEffect>Ver</button>
-                            <button style="margin-left: 2%;" (click)="eliminar(item)" type="button"
-                                class="btn btn-danger" mdbWavesEffect>Eliminar</button>
+                        
+
+                        <td>
+                            <span  type="button" (click)="ver(item)" data-toggle="modal" data-target="#exampleModal"><mdb-icon far size="2x"  icon="eye" class="brown-text" ></mdb-icon></span>
+                            <span  type="button" (click)="eliminar(item)"><mdb-icon far icon="trash-alt" class="red-text ml-3"  size="2x"></mdb-icon></span>
                         </td>
+
                     </tr>
                 </tbody>
             </table>

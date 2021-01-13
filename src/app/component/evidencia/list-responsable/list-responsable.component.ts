@@ -16,6 +16,7 @@ export class ListResponsableComponent implements OnInit {
   evidencias:Evidencia[];
 
   filtroUser:string;
+  mostrar:number=1;
 
 
   constructor(
@@ -32,7 +33,7 @@ export class ListResponsableComponent implements OnInit {
       console.log(this.usuario);
 
       if(this.usuario != null){
-        this.listarEvidencias(this.usuario.unidad.id);
+        this.listarEvidencias(this.usuario.unidad.id,this.mostrar);
   
       }
     });
@@ -40,11 +41,16 @@ export class ListResponsableComponent implements OnInit {
 
   }
 
-  listarEvidencias(id:number):void{
-    this.evidenciaServicio.buscarPorUnidad(id).subscribe(resp =>{
+  listarEvidencias(id:number, estado:number):void{
+    this.evidenciaServicio.listPorUnidadYEstadoResponsable(id,estado).subscribe(resp =>{
       console.log(resp);
       this.evidencias = resp;
     })
   }
 
+
+  
+  compare(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
 }

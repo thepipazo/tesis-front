@@ -3,11 +3,22 @@
         <mdb-card-header>
             <h3>Evidencias</h3>
           
-                <div class="md-form  col-md-11" id="buscador">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="md-form  col-md-4" id="buscador">
                     <input mdbInput type="text" [(ngModel)]="filtroUser" class="form-control">
                     <label for="form1" class="">Buscar Por Codigo</label>
-
                 </div>
+                <div class="col-md-4" style="margin-left: 24%;padding-top: 2%;">
+                    <label for="" class="col-md-5"> Mostrar por estado </label>
+                    <select [compareWith]="compare" class="browser-default custom-select col-md-7" id="unidad"
+                        name="unidad" (change)="listarEvidencias(usuario.id,mostrar)" [(ngModel)]="mostrar" required>
+                        <option value="1"> En Espera </option>
+                        <option value="2"> Aprobado </option>
+                        <option value="3"> Rechazado </option>
+                    </select>
+                </div>
+            </div>
 
            
         </mdb-card-header>
@@ -38,18 +49,18 @@
                         <td><a>{{evi.registro.tipo_registro}}</a></td>
                         <td><a>{{evi.ambito_a.nombreAmbito}}</a></td>
 
-                        <td  *ngIf="evi.estado == 'En Espera'" ><mdb-card style="background-color: yellow;"> <a>{{evi.estado}}</a> </mdb-card></td>
-                        <td  *ngIf="evi.estado == 'Rechazado'"><mdb-card style="background-color: red; color: white;"> <a> {{evi.estado}}</a> </mdb-card></td>
-                        <td  *ngIf="evi.estado == 'Aprobado'"><mdb-card style="background-color: green; color: white;"> <a> {{evi.estado}}</a> </mdb-card></td>
-                        <td  *ngIf="evi.estado == 'Aprobado Por Responsable'"><mdb-card style="background-color: green; color: white;"> <a> {{evi.estado}}</a> </mdb-card></td>
+                        <td  *ngIf="evi.estado == 'En Espera'" > <a> <mdb-icon fas icon="question"></mdb-icon> <mdb-icon fas icon="question"></mdb-icon> </a> </td>
+                        <td  *ngIf="evi.estado == 'Rechazado por dca'"> <a> <mdb-icon style="color: green;" fas icon="user-check"></mdb-icon>  <mdb-icon style="color: red;" fas icon="user-times"></mdb-icon> </a> </td>
+                        <td  *ngIf="evi.estado == 'Rechazado por responsable'"> <a><mdb-icon style="color: red;" fas icon="user-times"></mdb-icon> </a> </td>
+
+                        <td  *ngIf="evi.estado == 'Aprobado'"> <a>  <mdb-icon style="color: green;" fas icon="user-check"></mdb-icon>  <mdb-icon style="color: green;" fas icon="user-check"></mdb-icon></a>
+                        <td  *ngIf="evi.estado == 'Aprobado Por Responsable'"> <a> <mdb-icon style="color: green;" fas icon="user-check"></mdb-icon> <mdb-icon fas icon="question"></mdb-icon></a> </td>
 
                         <td>
-                            <button type="button" data-toggle="modal" [routerLink]="['/evidencia/ver-evidencia-usuario',evi]"   class="btn btn-info" mdbWavesEffect>Ver</button>
-                            <button *ngIf="evi.estado == 'En Espera'" style="margin-left: 1%;" type="button" data-toggle="modal" [routerLink]="['/evidencia/nueva-evidencia',evi]"   class="btn btn-primary" mdbWavesEffect>Editar</button>
-                            <button *ngIf="evi.estado == 'En Espera'" style="margin-left: 1%;" type="button" data-toggle="modal" (click)="eliminar(evi.id)" class="btn btn-danger" mdbWavesEffect>Eliminar</button>
-
+                            <span [routerLink]="['/evidencia/ver-evidencia-usuario',evi]"><mdb-icon far size="2x" icon="eye" class="brown-text" ></mdb-icon></span>
+                            <span *ngIf="evi.estado == 'En Espera'"  type="button"  [routerLink]="['/evidencia/nueva-evidencia',evi]"><mdb-icon size="2x" class="blue-text ml-3" fas icon="edit"></mdb-icon></span>
+                            <span *ngIf="evi.estado == 'En Espera'"  type="button"  (click)="eliminar(evi.id)"  ><mdb-icon far icon="trash-alt" class="red-text ml-3"  size="2x"></mdb-icon></span>
                         </td>
-
                     </tr>
                 </tbody>
             </table>

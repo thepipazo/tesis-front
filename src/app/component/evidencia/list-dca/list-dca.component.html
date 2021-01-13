@@ -2,14 +2,23 @@
     <mdb-card style="height: 700px;">
         <mdb-card-header>
             <h3>Evidencias</h3>
-          
-                <div class="md-form  col-md-11" id="buscador">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="md-form  col-md-4" id="buscador">
                     <input mdbInput type="text" [(ngModel)]="filtroUser" class="form-control">
                     <label for="form1" class="">Buscar Por Codigo</label>
-
                 </div>
+                <div class="col-md-4" style="margin-left: 24%;padding-top: 2%;">
+                    <label for="" class="col-md-5"> Mostrar por estado </label>
+                    <select [compareWith]="compare" class="browser-default custom-select col-md-7" id="unidad"
+                        name="unidad" (change)="listarEvidencias(mostrar)" [(ngModel)]="mostrar" required>
+                        <option value="1"> En Espera </option>
+                        <option value="2"> Aprobado </option>
+                        <option value="3"> Rechazado </option>
+                    </select>
+                </div>
+            </div>
 
-           
         </mdb-card-header>
 
         <mdb-card-body style="overflow-y: auto;">
@@ -41,12 +50,12 @@
                         <td><a>{{evi.proceso.nombre_proceso}}</a></td>
                         <td><a>{{evi.registro.tipo_registro}}</a></td>
                         <td><a>{{evi.debilidad.nombre}}</a></td>
-                        <td *ngIf="evi.estadoDac == 'En Espera'"><mdb-card style="background-color: rgb(219, 151, 24);"> <a>{{evi.estadoDac}}</a> </mdb-card></td>
-                        <td *ngIf="evi.estadoDac == 'Rechazado'"><a>{{evi.estadoDac}}</a></td>
-                        <td *ngIf="evi.estadoDac == 'Aprobado'"> <a>{{evi.estadoDac}}</a></td>                       
+                        <td  *ngIf="evi.estadoDac == 'En Espera'"><a>{{evi.estadoDac}}</a></td>                        
+                        <td  *ngIf="evi.estadoDac == 'Aprobado'"> <a> <mdb-icon style="color: green;" fas icon="check"></mdb-icon> </a> </td>
+                        <td  *ngIf="evi.estadoDac == 'Rechazado'"><a><mdb-icon style="color: red;" fas icon="times"></mdb-icon> </a> </td>
 
                         <td>
-                            <button type="button" data-toggle="modal" [routerLink]="['/evidencia/ver-evidencia-dca',evi]"   class="btn btn-info" mdbWavesEffect>Ver</button>
+                            <span [routerLink]="['/evidencia/ver-evidencia-dca',evi]"><mdb-icon far size="2x" icon="eye" class="brown-text" ></mdb-icon></span>
                         </td>
 
                     </tr>

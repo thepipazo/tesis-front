@@ -54,6 +54,10 @@ export class UnidadService {
     return this.http.get<Unidad[]>(this.API_SERVER+"/list");
      
    }
+   public  listarUnidadesPorId(id:number) : Observable<Unidad>{
+    return this.http.get<Unidad>(this.API_SERVER+"/list/"+id);
+     
+   }
 
    public  listarUnidadesPorEstado(estado:boolean) : Observable<Unidad[]>{
     return this.http.get<Unidad[]>(this.API_SERVER+"/listUnidadEstado/"+estado);

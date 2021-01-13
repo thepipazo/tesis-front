@@ -1,4 +1,4 @@
-<div class="container col-md-8" style="margin-top: 1%; height: auto;">
+<div class="container col-md-10" style="margin-top: 1%; height: auto;">
     <mdb-card style="height: 700px;">
         <mdb-card-header>
             <h3>Registros</h3>
@@ -37,10 +37,10 @@
                         <td><a>{{item.tipo_registro}}</a></td>
                         <td><a>{{estadoEntrante(item.estado)}}</a></td>
 
-                        <td><button type="button" data-toggle="modal" data-target="#exampleModal" (click)="ver(item)"
-                                class="btn btn-info" mdbWavesEffect>Ver</button>
-                            <button style="margin-left: 2%;" (click)="eliminar(item)" type="button"
-                                class="btn btn-danger" mdbWavesEffect>Eliminar</button>
+                        
+                        <td>
+                            <span  type="button" (click)="ver(item)" data-toggle="modal" data-target="#exampleModal"><mdb-icon far size="2x"  icon="eye" class="brown-text" ></mdb-icon></span>
+                            <span  type="button" (click)="eliminar(item)"><mdb-icon far icon="trash-alt" class="red-text ml-3"  size="2x"></mdb-icon></span>
                         </td>
 
                     </tr>

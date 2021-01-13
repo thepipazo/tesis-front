@@ -56,7 +56,6 @@ Swal.fire({
 
         this.ambitoService.eliminar(item.id).subscribe(resp => {
           Swal.fire('Eliminado', `El nuevoAmbito: ${item.nombre_ambito} ha sido eliminada con exito`, 'success');
-
           this.listarTodos();
 
         })

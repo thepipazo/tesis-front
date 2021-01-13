@@ -57,6 +57,9 @@ export class NavbarComponent implements OnInit {
 
     this.permisoDca = this.consultaRol(['dca']);
 
+    this.permisoDirector = this.consultaRol(['director_docencia']);
+
+
 
     } else {
       this.isLogged = false;

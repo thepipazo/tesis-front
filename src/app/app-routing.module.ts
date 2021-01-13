@@ -20,6 +20,9 @@ import { ListDcaComponent } from './component/evidencia/list-dca/list-dca.compon
 import { VerUsuarioComponent } from './component/evidencia/ver-usuario/ver-usuario.component';
 import { EvidenciaService } from './servicios/evidencia/evidencia.service';
 import { ListDirectorComponent } from './component/evidencia/list-director/list-director.component';
+import { BarraComponent } from './component/graficos/barra/barra.component';
+import { ListDirectorUnidadComponent } from './component/evidencia/list-director/list-director-unidad/list-director-unidad.component';
+import { MiPerfilComponent } from './component/mi-perfil/mi-perfil.component';
 
 
 
@@ -41,8 +44,13 @@ const routes: Routes = [
   { path: 'evidencia/ver-evidencia-usuario', component: VerUsuarioComponent },
   { path: 'evidencia', component: ListComponent },
   { path: 'evidencia-director', component: ListDirectorComponent},
+  { path: 'evidencia-director-unidad', component: ListDirectorUnidadComponent},
   { path: 'evidencia-responsable', component: ListResponsableComponent },
   { path: 'evidencia-dca', component: ListDcaComponent },
+  { path: 'graficos/barra', component: BarraComponent },
+  { path: 'usuario/mi-perfil', component: MiPerfilComponent },
+
+
 
 
 
