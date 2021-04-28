@@ -41,7 +41,7 @@
                     </tr>
                 </thead>
                 <tbody style="overflow: auto;">
-                    <tr *ngFor="let evi of evidencias">
+                    <tr *ngFor="let evi of evidencias | filtro: 'codigo':filtroUser">
                         <td><a>{{evi.codigo}}</a></td>
                         <td><a>{{evi.fecha}}</a></td>
                         <td><a>{{evi.unidad.nombre}}</a></td>
@@ -57,7 +57,7 @@
                         <td  *ngIf="evi.estado == 'Aprobado Por Responsable'"> <a> <mdb-icon style="color: green;" fas icon="user-check"></mdb-icon> <mdb-icon fas icon="question"></mdb-icon></a> </td>
 
                         <td>
-                            <span [routerLink]="['/evidencia/ver-evidencia-usuario',evi]"><mdb-icon far size="2x" icon="eye" class="brown-text" ></mdb-icon></span>
+                            <span [routerLink]="['/evidencia/ver-evidencia-usuario',evi.id]"><mdb-icon far size="2x" icon="eye" class="brown-text" ></mdb-icon></span>
                             <span *ngIf="evi.estado == 'En Espera'"  type="button"  [routerLink]="['/evidencia/nueva-evidencia',evi]"><mdb-icon size="2x" class="blue-text ml-3" fas icon="edit"></mdb-icon></span>
                             <span *ngIf="evi.estado == 'En Espera'"  type="button"  (click)="eliminar(evi.id)"  ><mdb-icon far icon="trash-alt" class="red-text ml-3"  size="2x"></mdb-icon></span>
                         </td>

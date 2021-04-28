@@ -41,7 +41,7 @@
                     </tr>
                 </thead>
                 <tbody style="overflow: auto;">
-                    <tr *ngFor="let evi of evidencias">
+                    <tr *ngFor="let evi of evidencias | filtro: 'codigo':filtroUser">
                         <td><a>{{evi.codigo}}</a></td>
                         <td><a>{{evi.nombrecorto}}</a></td>
                         <td><a>{{evi.usuario.rut}}</a></td>

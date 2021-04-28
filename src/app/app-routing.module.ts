@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'evidencia/nueva-evidencia', component: EvidenciaComponent },
   { path: 'evidencia/ver-evidencia-responsable', component: VerResponsableComponent },
   { path: 'evidencia/ver-evidencia-dca', component: VerDcaComponent },
-  { path: 'evidencia/ver-evidencia-usuario', component: VerUsuarioComponent },
+  { path: 'evidencia/ver-evidencia-usuario/:id', component: VerUsuarioComponent },
   { path: 'evidencia', component: ListComponent },
   { path: 'evidencia-director', component: ListDirectorComponent},
   { path: 'evidencia-director-unidad', component: ListDirectorUnidadComponent},
